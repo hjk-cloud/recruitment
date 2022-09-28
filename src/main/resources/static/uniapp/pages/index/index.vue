@@ -1,11 +1,7 @@
 <template>
 	<view class="content">
 		<image class="logo" src="/static/logo.png"></image>
-		<view class="text-area">
-			<text class="title">{{title}}</text>
-		</view>
-	首页
-	<u-icon name="photo"></u-icon>
+		首页
 	</view>
 </template>
 

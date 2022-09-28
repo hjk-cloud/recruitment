@@ -1,5 +1,6 @@
 package edu.lnu.recruitment.admin.entity;
 
+
 import lombok.Data;
 
 /**
