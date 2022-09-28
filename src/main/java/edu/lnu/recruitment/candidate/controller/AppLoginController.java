@@ -1,6 +1,7 @@
 package edu.lnu.recruitment.candidate.controller;
 
 import edu.lnu.recruitment.common.utils.R;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -13,11 +14,12 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping("/app/user")
+@CrossOrigin
 public class AppLoginController {
 
     @RequestMapping("/sendSmsCode")
     public R sendSmsCode(String phone) {
-        System.out.println(phone);
-        return R.ok();
+        System.out.println(phone + "-------");
+        return R.ok("11111success");
     }
 }
