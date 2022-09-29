@@ -3,7 +3,7 @@
 		<view class="title">请先登录/注册</view>
 		<u-form :model="form" ref="uForm">
 			<u-form-item>
-				<u-input v-model="form.mobile" placeholder="请输入手机号" />
+				<u-input v-model="form.phone" placeholder="请输入手机号" />
 			</u-form-item>
 			<u-form-item>
 				<u-input v-model="form.code" placeholder="请输入验证码" />
@@ -13,8 +13,8 @@
 			</u-form-item>
 		</u-form>
 		<view class="button-login">
-			<u-button v-show="form.mobile && form.code" type="success" @click="phoneLogin" shape="circle">登录</u-button>
-			<u-button v-show="!form.mobile || !form.code" type="default" shape="circle">登录</u-button>
+			<u-button v-show="form.phone && form.code" type="success" @click="phoneLogin" shape="circle">登录</u-button>
+			<u-button v-show="!form.phone || !form.code" type="default" shape="circle">登录</u-button>
 		</view>
 	</view>
 </template>
@@ -24,7 +24,7 @@
 		data() {
 			return {
 				form: {
-					mobile: "",
+					phone: "",
 					code: ""
 				},
 				tips: '验证码'
@@ -53,9 +53,9 @@
 			},
 			getCode() {
 				let phoneCodeVerification = /^[1][3-9][0-9]{9}$/;
-				if (this.form.mobile == '') {
+				if (this.form.phone == '') {
 					this.$u.toast('请输入手机号');
-				} else if (!phoneCodeVerification.test(this.form.mobile)) {
+				} else if (!phoneCodeVerification.test(this.form.phone)) {
 					this.$u.toast('请输入规范的手机号');
 				} else {
 
@@ -65,10 +65,10 @@
 						uni.showLoading({
 							title: '正在获取验证码'
 						})
-
 						this.$H.post("user/sendSmsCode", {
-							mobile: this.form.mobile
+							phone: this.form.phone,
 						}).then(res => {
+							
 							if (res.code == 0) {
 								console.log(res.msg);
 								uni.hideLoading();
