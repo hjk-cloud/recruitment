@@ -21,6 +21,7 @@ public class AppLoginController {
 
     @RequestMapping("/sendSmsCode")
     public R sendSmsCode(@RequestBody String phone) {
+
         String code = appUserService.sendSmsCode(phone);
         return R.ok(code);
     }
