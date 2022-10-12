@@ -17,7 +17,6 @@ import java.util.Date;
 public class MyMetaObjectHandler implements MetaObjectHandler {//extends??
     @Override
     public void insertFill(MetaObject metaObject) {
-        //setFieldValByName(java.lang.String fieldName, java.lang.Object fieldVal, org.apache.ibatis.reflection.MetaObject metaObject)
         this.setFieldValByName("createTime",new Date(),metaObject);
         this.setFieldValByName("updateTime",new Date(),metaObject);
     }
