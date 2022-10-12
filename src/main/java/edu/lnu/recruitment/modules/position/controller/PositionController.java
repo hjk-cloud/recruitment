@@ -1,5 +1,6 @@
 package edu.lnu.recruitment.modules.position.controller;
 
+import cn.hutool.core.lang.Snowflake;
 import edu.lnu.recruitment.common.utils.R;
 import edu.lnu.recruitment.modules.position.entity.Position;
 import edu.lnu.recruitment.modules.position.service.PositionService;
@@ -24,11 +25,8 @@ public class PositionController {
     private PositionService positionService;
 
     @RequestMapping("/addPosition")
-    public R addPosition(@RequestBody String name) {
-        Position position = new Position();
-        position.setName(name);
-        position.setId(324234L);
-        positionService.save(position);
-        return R.ok("添加成功");
+    public R addPosition(@RequestBody Position position) {
+        boolean isSuccess = positionService.save(position);
+        return R.ok("status:" + isSuccess);
     }
 }

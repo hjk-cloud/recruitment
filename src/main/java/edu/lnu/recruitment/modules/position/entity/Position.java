@@ -1,11 +1,11 @@
 package edu.lnu.recruitment.modules.position.entity;
 
-import com.baomidou.mybatisplus.annotation.TableField;
-import com.baomidou.mybatisplus.annotation.TableId;
-import com.baomidou.mybatisplus.annotation.TableName;
+import com.baomidou.mybatisplus.annotation.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.Date;
 
 /**
  * @Package: edu.lnu.recruitment.modules.position.entity
@@ -19,15 +19,30 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @TableName("t_position")
 public class Position {
+    @TableId(type = IdType.ID_WORKER)
     private Long id;
+
     @TableField(value = "position_name")
     private String name;
+
     @TableField(value = "position_description")
     private String description;
+
     private String highlight;
+
     private String category;
+
     private String threshold;
-    private String keywords;
+
+    private String keyword;
+
     private String address;
+
     private String salaryRange;
+
+    @TableField(fill = FieldFill.INSERT)
+    private Date createTime;
+
+    @TableField(fill = FieldFill.INSERT_UPDATE)
+    private Date updateTime;
 }
