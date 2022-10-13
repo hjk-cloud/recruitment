@@ -19,7 +19,6 @@ import java.util.Date;
 @NoArgsConstructor
 @TableName("t_position")
 public class Position {
-    @TableId(type = IdType.ID_WORKER)
     private Long id;
 
     @TableField(value = "position_name")

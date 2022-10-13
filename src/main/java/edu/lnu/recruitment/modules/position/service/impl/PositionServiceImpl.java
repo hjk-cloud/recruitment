@@ -1,11 +1,15 @@
 package edu.lnu.recruitment.modules.position.service.impl;
 
 import cn.hutool.core.lang.Snowflake;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import edu.lnu.recruitment.modules.position.entity.Position;
 import edu.lnu.recruitment.modules.position.mapper.PositionMapper;
 import edu.lnu.recruitment.modules.position.service.PositionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.Map;
 
 /**
  * @Package: edu.lnu.recruitment.modules.position.service.impl
@@ -26,4 +30,15 @@ public class PositionServiceImpl implements PositionService {
         positionMapper.insert(position);
         return true;
     }
+
+    @Override
+    public List<Position> queryPage(Map<String, Object> params) {
+        int pageNum = (int) params.get("page");
+        int size = (int) params.get("size");
+        Page<Position> page = new Page<>(pageNum, size);
+        positionMapper.selectPage(page, null);
+        return page.getRecords();
+    }
+
+
 }

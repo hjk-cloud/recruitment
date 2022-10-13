@@ -1,8 +1,9 @@
 package edu.lnu.recruitment.modules.position.service;
 
-import com.baomidou.mybatisplus.extension.service.IService;
 import edu.lnu.recruitment.modules.position.entity.Position;
-import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.Map;
 
 /**
  * @Package: edu.lnu.recruitment.modules.position.service
@@ -15,4 +16,5 @@ public interface PositionService {
 
     boolean save(Position position);
 
+    List<Position> queryPage(Map<String, Object> map);
 }
