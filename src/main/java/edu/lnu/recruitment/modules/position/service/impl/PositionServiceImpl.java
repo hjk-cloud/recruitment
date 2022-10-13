@@ -1,5 +1,6 @@
 package edu.lnu.recruitment.modules.position.service.impl;
 
+import cn.hutool.core.lang.Snowflake;
 import edu.lnu.recruitment.modules.position.entity.Position;
 import edu.lnu.recruitment.modules.position.mapper.PositionMapper;
 import edu.lnu.recruitment.modules.position.service.PositionService;
@@ -21,6 +22,7 @@ public class PositionServiceImpl implements PositionService {
 
     @Override
     public boolean save(Position position) {
+        position.setId(new Snowflake(0, 1).nextId());
         positionMapper.insert(position);
         return true;
     }
