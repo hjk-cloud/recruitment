@@ -10,7 +10,7 @@ spring:
   datasource:
     username: root
     password: 110039
-    url: jdbc:mysql://localhost:3306/recuritment?useSSL=false&useUnicode=true&characterEncoding=utf-8&serverTimezone=GMT%2B8
+    url: jdbc:mysql://localhost:3306/recruitment?useSSL=false&useUnicode=true&characterEncoding=utf-8&serverTimezone=GMT%2B8
     driver-class-name: com.mysql.cj.jdbc.Driver
   # 环境 dev|test|prod
   profiles:
