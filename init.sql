@@ -4271,7 +4271,7 @@ UNLOCK TABLES;
 --
 
 /*!40000 ALTER TABLE `innodb_index_stats` DISABLE KEYS */;
-INSERT  IGNORE INTO `innodb_index_stats` VALUES ('mysql','component','PRIMARY','2022-10-14 10:15:03','n_diff_pfx01',0,1,'component_id'),('mysql','component','PRIMARY','2022-10-14 10:15:03','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('mysql','component','PRIMARY','2022-10-14 10:15:03','size',1,NULL,'Number of pages in the index'),('recruitment','t_admin','PRIMARY','2022-10-14 10:54:24','n_diff_pfx01',0,1,'id'),('recruitment','t_admin','PRIMARY','2022-10-14 10:54:24','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('recruitment','t_admin','PRIMARY','2022-10-14 10:54:24','size',1,NULL,'Number of pages in the index'),('recruitment','t_candidate','PRIMARY','2022-10-14 12:23:18','n_diff_pfx01',0,1,'id'),('recruitment','t_candidate','PRIMARY','2022-10-14 12:23:18','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('recruitment','t_candidate','PRIMARY','2022-10-14 12:23:18','size',1,NULL,'Number of pages in the index'),('recruitment','t_position','PRIMARY','2022-10-14 12:25:17','n_diff_pfx01',10,1,'id'),('recruitment','t_position','PRIMARY','2022-10-14 12:25:17','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('recruitment','t_position','PRIMARY','2022-10-14 12:25:17','size',1,NULL,'Number of pages in the index'),('recruitment','t_recruiter','PRIMARY','2022-10-14 12:23:40','n_diff_pfx01',0,1,'id'),('recruitment','t_recruiter','PRIMARY','2022-10-14 12:23:40','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('recruitment','t_recruiter','PRIMARY','2022-10-14 12:23:40','size',1,NULL,'Number of pages in the index'),('sys','sys_config','PRIMARY','2022-10-11 10:43:06','n_diff_pfx01',6,1,'variable'),('sys','sys_config','PRIMARY','2022-10-11 10:43:06','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('sys','sys_config','PRIMARY','2022-10-11 10:43:06','size',1,NULL,'Number of pages in the index');
+INSERT  IGNORE INTO `innodb_index_stats` VALUES ('mysql','component','PRIMARY','2022-10-14 10:15:03','n_diff_pfx01',0,1,'component_id'),('mysql','component','PRIMARY','2022-10-14 10:15:03','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('mysql','component','PRIMARY','2022-10-14 10:15:03','size',1,NULL,'Number of pages in the index'),('recruitment','t_admin','PRIMARY','2022-10-14 10:54:24','n_diff_pfx01',0,1,'id'),('recruitment','t_admin','PRIMARY','2022-10-14 10:54:24','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('recruitment','t_admin','PRIMARY','2022-10-14 10:54:24','size',1,NULL,'Number of pages in the index'),('recruitment','t_candidate','PRIMARY','2022-10-14 12:23:18','n_diff_pfx01',0,1,'id'),('recruitment','t_candidate','PRIMARY','2022-10-14 12:23:18','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('recruitment','t_candidate','PRIMARY','2022-10-14 12:23:18','size',1,NULL,'Number of pages in the index'),('recruitment','t_candidate_position','PRIMARY','2022-10-14 13:25:40','n_diff_pfx01',0,1,'id'),('recruitment','t_candidate_position','PRIMARY','2022-10-14 13:25:40','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('recruitment','t_candidate_position','PRIMARY','2022-10-14 13:25:40','size',1,NULL,'Number of pages in the index'),('recruitment','t_position','PRIMARY','2022-10-14 12:25:17','n_diff_pfx01',10,1,'id'),('recruitment','t_position','PRIMARY','2022-10-14 12:25:17','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('recruitment','t_position','PRIMARY','2022-10-14 12:25:17','size',1,NULL,'Number of pages in the index'),('recruitment','t_recruiter','PRIMARY','2022-10-14 12:23:40','n_diff_pfx01',0,1,'id'),('recruitment','t_recruiter','PRIMARY','2022-10-14 12:23:40','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('recruitment','t_recruiter','PRIMARY','2022-10-14 12:23:40','size',1,NULL,'Number of pages in the index'),('sys','sys_config','PRIMARY','2022-10-11 10:43:06','n_diff_pfx01',6,1,'variable'),('sys','sys_config','PRIMARY','2022-10-11 10:43:06','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('sys','sys_config','PRIMARY','2022-10-11 10:43:06','size',1,NULL,'Number of pages in the index');
 /*!40000 ALTER TABLE `innodb_index_stats` ENABLE KEYS */;
 
 --
@@ -4279,7 +4279,7 @@ INSERT  IGNORE INTO `innodb_index_stats` VALUES ('mysql','component','PRIMARY','
 --
 
 /*!40000 ALTER TABLE `innodb_table_stats` DISABLE KEYS */;
-INSERT  IGNORE INTO `innodb_table_stats` VALUES ('mysql','component','2022-10-14 10:15:03',0,1,0),('recruitment','t_admin','2022-10-14 10:54:24',0,1,0),('recruitment','t_candidate','2022-10-14 12:23:18',0,1,0),('recruitment','t_position','2022-10-14 12:25:17',10,1,0),('recruitment','t_recruiter','2022-10-14 12:23:40',0,1,0),('sys','sys_config','2022-10-11 10:43:06',6,1,0);
+INSERT  IGNORE INTO `innodb_table_stats` VALUES ('mysql','component','2022-10-14 10:15:03',0,1,0),('recruitment','t_admin','2022-10-14 10:54:24',0,1,0),('recruitment','t_candidate','2022-10-14 12:23:18',0,1,0),('recruitment','t_candidate_position','2022-10-14 13:25:40',0,1,0),('recruitment','t_position','2022-10-14 12:25:17',10,1,0),('recruitment','t_recruiter','2022-10-14 12:23:40',0,1,0),('sys','sys_config','2022-10-11 10:43:06',6,1,0);
 /*!40000 ALTER TABLE `innodb_table_stats` ENABLE KEYS */;
 
 --
@@ -5014,6 +5014,33 @@ LOCK TABLES `t_candidate` WRITE;
 UNLOCK TABLES;
 
 --
+-- Table structure for table `t_candidate_position`
+--
+
+DROP TABLE IF EXISTS `t_candidate_position`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `t_candidate_position` (
+  `id` bigint NOT NULL,
+  `candidate_id` bigint DEFAULT NULL,
+  `position_id` bigint DEFAULT NULL,
+  `delivery_status` varchar(5) DEFAULT NULL,
+  `create_time` datetime DEFAULT NULL,
+  `update_time` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `t_candidate_position`
+--
+
+LOCK TABLES `t_candidate_position` WRITE;
+/*!40000 ALTER TABLE `t_candidate_position` DISABLE KEYS */;
+/*!40000 ALTER TABLE `t_candidate_position` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `t_position`
 --
 
@@ -5086,4 +5113,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-10-14 20:25:25
+-- Dump completed on 2022-10-14 21:26:20
