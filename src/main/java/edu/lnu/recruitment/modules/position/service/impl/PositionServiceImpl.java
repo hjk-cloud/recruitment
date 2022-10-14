@@ -35,7 +35,7 @@ public class PositionServiceImpl implements PositionService {
     public List<Position> queryPage(Map<String, Object> params) {
         int pageNum = (int) params.get("page");
         int size = (int) params.get("size");
-        Page<Position> page = new Page<>(pageNum, size);
+        Page<Position> page = new Page<>(pageNum, size); 
         positionMapper.selectPage(page, null);
         return page.getRecords();
     }
