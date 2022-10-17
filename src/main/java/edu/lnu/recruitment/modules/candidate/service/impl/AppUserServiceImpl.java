@@ -1,15 +1,14 @@
-package edu.lnu.recruitment.candidate.service.impl;
+package edu.lnu.recruitment.modules.candidate.service.impl;
 
 import cn.hutool.core.util.ObjectUtil;
 import cn.hutool.core.util.RandomUtil;
-
-import edu.lnu.recruitment.candidate.service.AppUserService;
 import edu.lnu.recruitment.common.utils.RedisUtil;
+import edu.lnu.recruitment.modules.candidate.service.AppUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
- * @Package: edu.lnu.recruitment.candidate.service.impl
+ * @Package: edu.lnu.recruitment.modules.candidate.service.impl
  * @ClassName: AppUserServiceImpl
  * @Author: huangjk
  * @CreateTime: 2022/9/29 16:23

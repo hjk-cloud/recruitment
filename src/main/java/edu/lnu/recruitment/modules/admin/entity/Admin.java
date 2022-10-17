@@ -1,4 +1,4 @@
-package edu.lnu.recruitment.admin.entity;
+package edu.lnu.recruitment.modules.admin.entity;
 
 
 import lombok.AllArgsConstructor;
@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 import java.io.Serializable;
 
 /**
- * @Package: edu.lnu.recruitment.admin.entity
+ * @Package: edu.lnu.recruitment.modules.admin.entity
  * @ClassName: Admin
  * @Author: huangjk
  * @CreateTime: 2022/9/28 15:54

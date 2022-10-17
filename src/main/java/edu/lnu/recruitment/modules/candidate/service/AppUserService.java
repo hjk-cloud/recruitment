@@ -1,7 +1,7 @@
-package edu.lnu.recruitment.candidate.service;
+package edu.lnu.recruitment.modules.candidate.service;
 
 /**
- * @Package: edu.lnu.recruitment.candidate.service
+ * @Package: edu.lnu.recruitment.modules.candidate.service
  * @ClassName: AppUserService
  * @Author: huangjk
  * @CreateTime: 2022/9/29 15:55
