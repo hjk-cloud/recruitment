@@ -4271,7 +4271,7 @@ UNLOCK TABLES;
 --
 
 /*!40000 ALTER TABLE `innodb_index_stats` DISABLE KEYS */;
-INSERT  IGNORE INTO `innodb_index_stats` VALUES ('mysql','component','PRIMARY','2022-10-14 10:15:03','n_diff_pfx01',0,1,'component_id'),('mysql','component','PRIMARY','2022-10-14 10:15:03','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('mysql','component','PRIMARY','2022-10-14 10:15:03','size',1,NULL,'Number of pages in the index'),('recruitment','t_admin','PRIMARY','2022-10-14 10:54:24','n_diff_pfx01',0,1,'id'),('recruitment','t_admin','PRIMARY','2022-10-14 10:54:24','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('recruitment','t_admin','PRIMARY','2022-10-14 10:54:24','size',1,NULL,'Number of pages in the index'),('recruitment','t_candidate','PRIMARY','2022-10-14 12:23:18','n_diff_pfx01',0,1,'id'),('recruitment','t_candidate','PRIMARY','2022-10-14 12:23:18','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('recruitment','t_candidate','PRIMARY','2022-10-14 12:23:18','size',1,NULL,'Number of pages in the index'),('recruitment','t_candidate_position','PRIMARY','2022-10-14 13:25:40','n_diff_pfx01',0,1,'id'),('recruitment','t_candidate_position','PRIMARY','2022-10-14 13:25:40','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('recruitment','t_candidate_position','PRIMARY','2022-10-14 13:25:40','size',1,NULL,'Number of pages in the index'),('recruitment','t_position','PRIMARY','2022-10-14 12:25:17','n_diff_pfx01',10,1,'id'),('recruitment','t_position','PRIMARY','2022-10-14 12:25:17','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('recruitment','t_position','PRIMARY','2022-10-14 12:25:17','size',1,NULL,'Number of pages in the index'),('recruitment','t_recruiter','PRIMARY','2022-10-14 12:23:40','n_diff_pfx01',0,1,'id'),('recruitment','t_recruiter','PRIMARY','2022-10-14 12:23:40','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('recruitment','t_recruiter','PRIMARY','2022-10-14 12:23:40','size',1,NULL,'Number of pages in the index'),('sys','sys_config','PRIMARY','2022-10-11 10:43:06','n_diff_pfx01',6,1,'variable'),('sys','sys_config','PRIMARY','2022-10-11 10:43:06','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('sys','sys_config','PRIMARY','2022-10-11 10:43:06','size',1,NULL,'Number of pages in the index');
+INSERT  IGNORE INTO `innodb_index_stats` VALUES ('mysql','component','PRIMARY','2022-10-14 10:15:03','n_diff_pfx01',0,1,'component_id'),('mysql','component','PRIMARY','2022-10-14 10:15:03','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('mysql','component','PRIMARY','2022-10-14 10:15:03','size',1,NULL,'Number of pages in the index'),('recruitment','t_admin','PRIMARY','2022-10-14 10:54:24','n_diff_pfx01',0,1,'id'),('recruitment','t_admin','PRIMARY','2022-10-14 10:54:24','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('recruitment','t_admin','PRIMARY','2022-10-14 10:54:24','size',1,NULL,'Number of pages in the index'),('recruitment','t_candidate','PRIMARY','2022-10-16 13:29:52','n_diff_pfx01',0,1,'id'),('recruitment','t_candidate','PRIMARY','2022-10-16 13:29:52','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('recruitment','t_candidate','PRIMARY','2022-10-16 13:29:52','size',1,NULL,'Number of pages in the index'),('recruitment','t_candidate_position','PRIMARY','2022-10-14 13:25:40','n_diff_pfx01',0,1,'id'),('recruitment','t_candidate_position','PRIMARY','2022-10-14 13:25:40','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('recruitment','t_candidate_position','PRIMARY','2022-10-14 13:25:40','size',1,NULL,'Number of pages in the index'),('recruitment','t_company','PRIMARY','2022-10-17 03:03:45','n_diff_pfx01',0,1,'id'),('recruitment','t_company','PRIMARY','2022-10-17 03:03:45','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('recruitment','t_company','PRIMARY','2022-10-17 03:03:45','size',1,NULL,'Number of pages in the index'),('recruitment','t_position','PRIMARY','2022-10-16 13:31:36','n_diff_pfx01',11,1,'id'),('recruitment','t_position','PRIMARY','2022-10-16 13:31:36','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('recruitment','t_position','PRIMARY','2022-10-16 13:31:36','size',1,NULL,'Number of pages in the index'),('recruitment','t_recruiter','PRIMARY','2022-10-17 03:05:04','n_diff_pfx01',0,1,'id'),('recruitment','t_recruiter','PRIMARY','2022-10-17 03:05:04','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('recruitment','t_recruiter','PRIMARY','2022-10-17 03:05:04','size',1,NULL,'Number of pages in the index'),('sys','sys_config','PRIMARY','2022-10-11 10:43:06','n_diff_pfx01',6,1,'variable'),('sys','sys_config','PRIMARY','2022-10-11 10:43:06','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('sys','sys_config','PRIMARY','2022-10-11 10:43:06','size',1,NULL,'Number of pages in the index');
 /*!40000 ALTER TABLE `innodb_index_stats` ENABLE KEYS */;
 
 --
@@ -4279,7 +4279,7 @@ INSERT  IGNORE INTO `innodb_index_stats` VALUES ('mysql','component','PRIMARY','
 --
 
 /*!40000 ALTER TABLE `innodb_table_stats` DISABLE KEYS */;
-INSERT  IGNORE INTO `innodb_table_stats` VALUES ('mysql','component','2022-10-14 10:15:03',0,1,0),('recruitment','t_admin','2022-10-14 10:54:24',0,1,0),('recruitment','t_candidate','2022-10-14 12:23:18',0,1,0),('recruitment','t_candidate_position','2022-10-14 13:25:40',0,1,0),('recruitment','t_position','2022-10-14 12:25:17',10,1,0),('recruitment','t_recruiter','2022-10-14 12:23:40',0,1,0),('sys','sys_config','2022-10-11 10:43:06',6,1,0);
+INSERT  IGNORE INTO `innodb_table_stats` VALUES ('mysql','component','2022-10-14 10:15:03',0,1,0),('recruitment','t_admin','2022-10-14 10:54:24',0,1,0),('recruitment','t_candidate','2022-10-16 13:29:52',0,1,0),('recruitment','t_candidate_position','2022-10-14 13:25:40',0,1,0),('recruitment','t_company','2022-10-17 03:03:45',0,1,0),('recruitment','t_position','2022-10-16 13:31:36',11,1,0),('recruitment','t_recruiter','2022-10-17 03:05:04',0,1,0),('sys','sys_config','2022-10-11 10:43:06',6,1,0);
 /*!40000 ALTER TABLE `innodb_table_stats` ENABLE KEYS */;
 
 --
@@ -4997,7 +4997,7 @@ CREATE TABLE `t_candidate` (
   `education` varchar(2) DEFAULT NULL,
   `school` varchar(10) DEFAULT NULL,
   `expect_salary` varchar(10) DEFAULT NULL,
-  `attachment` blob,
+  `attachment` text COMMENT '附件路径',
   `create_time` datetime DEFAULT NULL,
   `update_time` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
@@ -5041,6 +5041,40 @@ LOCK TABLES `t_candidate_position` WRITE;
 UNLOCK TABLES;
 
 --
+-- Table structure for table `t_company`
+--
+
+DROP TABLE IF EXISTS `t_company`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `t_company` (
+  `id` bigint NOT NULL,
+  `company_name` varchar(10) DEFAULT NULL,
+  `category` varchar(20) DEFAULT NULL,
+  `number_scale` varchar(10) DEFAULT NULL COMMENT '人数规模',
+  `address` varchar(20) DEFAULT NULL,
+  `website` varchar(50) DEFAULT NULL,
+  `company_profile` varchar(200) DEFAULT NULL COMMENT '企业简介',
+  `full_name` varchar(20) DEFAULT NULL COMMENT '企业全称',
+  `credit_code` char(18) DEFAULT NULL COMMENT '企业信用代码',
+  `establish_date` date DEFAULT NULL,
+  `registered_capital` varchar(20) DEFAULT NULL COMMENT '注册资本',
+  `create_time` datetime DEFAULT NULL,
+  `update_time` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `t_company`
+--
+
+LOCK TABLES `t_company` WRITE;
+/*!40000 ALTER TABLE `t_company` DISABLE KEYS */;
+/*!40000 ALTER TABLE `t_company` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `t_position`
 --
 
@@ -5049,6 +5083,8 @@ DROP TABLE IF EXISTS `t_position`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `t_position` (
   `id` bigint NOT NULL,
+  `recruiter_id` bigint DEFAULT NULL,
+  `company_id` bigint DEFAULT NULL,
   `position_name` varchar(10) DEFAULT NULL,
   `position_description` varchar(255) DEFAULT NULL,
   `highlight` varchar(255) DEFAULT NULL,
@@ -5069,7 +5105,7 @@ CREATE TABLE `t_position` (
 
 LOCK TABLES `t_position` WRITE;
 /*!40000 ALTER TABLE `t_position` DISABLE KEYS */;
-INSERT INTO `t_position` VALUES (1,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(2,'2','描述','2','2','2','2','北京','2',NULL,NULL),(1580517072306307072,'Java开发工程师','1、参与电商基础数据建设，参与电商动态定价系统设计和搭建；2、参与电商分布式数据接入调度系统搭建及优化，打造高性能、高可用的数据接入中台；3、参与电商数据流建设，流式数据的清洗、抽取、计算等，以及大规模数据的存储和更新；4、参与电商资源特征数据挖掘，包括页面价值度、热点变化趋势等，攻克各种挑战及技术难关。',NULL,NULL,'1、本科及以上学历，计算机、数学等相关专业；2、熟练掌握Linux环境下的Go/Python/Java/C/C++等1至2种以上语言，有良好的编程习惯及逻辑实现能力；3、熟悉Hadoop，Hive，Spark，Storm，Kafka等常用工具优先；4、熟悉Web前端技术，对Html5/Css/Js/Vue/React有了解者优先。5、每周可实习4天以上，可实习4个月以上。',NULL,NULL,'20k-30k','2022-10-13 19:13:29','2022-10-13 19:13:29'),(1580517176962580480,'Java开发工程师','1、参与电商基础数据建设，参与电商动态定价系统设计和搭建；2、参与电商分布式数据接入调度系统搭建及优化，打造高性能、高可用的数据接入中台；3、参与电商数据流建设，流式数据的清洗、抽取、计算等，以及大规模数据的存储和更新；4、参与电商资源特征数据挖掘，包括页面价值度、热点变化趋势等，攻克各种挑战及技术难关。',NULL,NULL,'1、本科及以上学历，计算机、数学等相关专业；2、熟练掌握Linux环境下的Go/Python/Java/C/C++等1至2种以上语言，有良好的编程习惯及逻辑实现能力；3、熟悉Hadoop，Hive，Spark，Storm，Kafka等常用工具优先；4、熟悉Web前端技术，对Html5/Css/Js/Vue/React有了解者优先。5、每周可实习4天以上，可实习4个月以上。',NULL,NULL,'20k-30k','2022-10-13 19:13:54','2022-10-13 19:13:54'),(1580517236496531456,'Java开发工程师','1、参与电商基础数据建设，参与电商动态定价系统设计和搭建；2、参与电商分布式数据接入调度系统搭建及优化，打造高性能、高可用的数据接入中台；3、参与电商数据流建设，流式数据的清洗、抽取、计算等，以及大规模数据的存储和更新；4、参与电商资源特征数据挖掘，包括页面价值度、热点变化趋势等，攻克各种挑战及技术难关。',NULL,NULL,'1、本科及以上学历，计算机、数学等相关专业；2、熟练掌握Linux环境下的Go/Python/Java/C/C++等1至2种以上语言，有良好的编程习惯及逻辑实现能力；3、熟悉Hadoop，Hive，Spark，Storm，Kafka等常用工具优先；4、熟悉Web前端技术，对Html5/Css/Js/Vue/React有了解者优先。5、每周可实习4天以上，可实习4个月以上。',NULL,NULL,'20k-30k','2022-10-13 19:14:08','2022-10-13 19:14:08'),(1580517241957515264,'Java开发工程师','1、参与电商基础数据建设，参与电商动态定价系统设计和搭建；2、参与电商分布式数据接入调度系统搭建及优化，打造高性能、高可用的数据接入中台；3、参与电商数据流建设，流式数据的清洗、抽取、计算等，以及大规模数据的存储和更新；4、参与电商资源特征数据挖掘，包括页面价值度、热点变化趋势等，攻克各种挑战及技术难关。',NULL,NULL,'1、本科及以上学历，计算机、数学等相关专业；2、熟练掌握Linux环境下的Go/Python/Java/C/C++等1至2种以上语言，有良好的编程习惯及逻辑实现能力；3、熟悉Hadoop，Hive，Spark，Storm，Kafka等常用工具优先；4、熟悉Web前端技术，对Html5/Css/Js/Vue/React有了解者优先。5、每周可实习4天以上，可实习4个月以上。',NULL,NULL,'20k-30k','2022-10-13 19:14:10','2022-10-13 19:14:10'),(1580517244566372352,'Java开发工程师','1、参与电商基础数据建设，参与电商动态定价系统设计和搭建；2、参与电商分布式数据接入调度系统搭建及优化，打造高性能、高可用的数据接入中台；3、参与电商数据流建设，流式数据的清洗、抽取、计算等，以及大规模数据的存储和更新；4、参与电商资源特征数据挖掘，包括页面价值度、热点变化趋势等，攻克各种挑战及技术难关。',NULL,NULL,'1、本科及以上学历，计算机、数学等相关专业；2、熟练掌握Linux环境下的Go/Python/Java/C/C++等1至2种以上语言，有良好的编程习惯及逻辑实现能力；3、熟悉Hadoop，Hive，Spark，Storm，Kafka等常用工具优先；4、熟悉Web前端技术，对Html5/Css/Js/Vue/React有了解者优先。5、每周可实习4天以上，可实习4个月以上。',NULL,NULL,'20k-30k','2022-10-13 19:14:10','2022-10-13 19:14:10'),(1580519219275108354,'Java开发工程师','1、参与电商基础数据建设，参与电商动态定价系统设计和搭建；2、参与电商分布式数据接入调度系统搭建及优化，打造高性能、高可用的数据接入中台；3、参与电商数据流建设，流式数据的清洗、抽取、计算等，以及大规模数据的存储和更新；4、参与电商资源特征数据挖掘，包括页面价值度、热点变化趋势等，攻克各种挑战及技术难关。',NULL,NULL,'1、本科及以上学历，计算机、数学等相关专业；2、熟练掌握Linux环境下的Go/Python/Java/C/C++等1至2种以上语言，有良好的编程习惯及逻辑实现能力；3、熟悉Hadoop，Hive，Spark，Storm，Kafka等常用工具优先；4、熟悉Web前端技术，对Html5/Css/Js/Vue/React有了解者优先。5、每周可实习4天以上，可实习4个月以上。',NULL,NULL,'20k-30k','2022-10-13 19:22:01','2022-10-13 19:22:01'),(1580519221602947074,'Java开发工程师','1、参与电商基础数据建设，参与电商动态定价系统设计和搭建；2、参与电商分布式数据接入调度系统搭建及优化，打造高性能、高可用的数据接入中台；3、参与电商数据流建设，流式数据的清洗、抽取、计算等，以及大规模数据的存储和更新；4、参与电商资源特征数据挖掘，包括页面价值度、热点变化趋势等，攻克各种挑战及技术难关。',NULL,NULL,'1、本科及以上学历，计算机、数学等相关专业；2、熟练掌握Linux环境下的Go/Python/Java/C/C++等1至2种以上语言，有良好的编程习惯及逻辑实现能力；3、熟悉Hadoop，Hive，Spark，Storm，Kafka等常用工具优先；4、熟悉Web前端技术，对Html5/Css/Js/Vue/React有了解者优先。5、每周可实习4天以上，可实习4个月以上。',NULL,NULL,'20k-30k','2022-10-13 19:22:02','2022-10-13 19:22:02'),(1580519852194529280,'Java开发工程师','1、参与电商基础数据建设，参与电商动态定价系统设计和搭建；2、参与电商分布式数据接入调度系统搭建及优化，打造高性能、高可用的数据接入中台；3、参与电商数据流建设，流式数据的清洗、抽取、计算等，以及大规模数据的存储和更新；4、参与电商资源特征数据挖掘，包括页面价值度、热点变化趋势等，攻克各种挑战及技术难关。',NULL,NULL,'1、本科及以上学历，计算机、数学等相关专业；2、熟练掌握Linux环境下的Go/Python/Java/C/C++等1至2种以上语言，有良好的编程习惯及逻辑实现能力；3、熟悉Hadoop，Hive，Spark，Storm，Kafka等常用工具优先；4、熟悉Web前端技术，对Html5/Css/Js/Vue/React有了解者优先。5、每周可实习4天以上，可实习4个月以上。',NULL,NULL,'20k-30k','2022-10-13 19:24:32','2022-10-13 19:24:32');
+INSERT INTO `t_position` VALUES (1,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(2,NULL,NULL,'2','描述','2','2','2','2','北京','2',NULL,NULL),(1580517072306307072,NULL,NULL,'Java开发工程师','1、参与电商基础数据建设，参与电商动态定价系统设计和搭建；2、参与电商分布式数据接入调度系统搭建及优化，打造高性能、高可用的数据接入中台；3、参与电商数据流建设，流式数据的清洗、抽取、计算等，以及大规模数据的存储和更新；4、参与电商资源特征数据挖掘，包括页面价值度、热点变化趋势等，攻克各种挑战及技术难关。',NULL,NULL,'1、本科及以上学历，计算机、数学等相关专业；2、熟练掌握Linux环境下的Go/Python/Java/C/C++等1至2种以上语言，有良好的编程习惯及逻辑实现能力；3、熟悉Hadoop，Hive，Spark，Storm，Kafka等常用工具优先；4、熟悉Web前端技术，对Html5/Css/Js/Vue/React有了解者优先。5、每周可实习4天以上，可实习4个月以上。',NULL,NULL,'20k-30k','2022-10-13 19:13:29','2022-10-13 19:13:29'),(1580517176962580480,NULL,NULL,'Java开发工程师','1、参与电商基础数据建设，参与电商动态定价系统设计和搭建；2、参与电商分布式数据接入调度系统搭建及优化，打造高性能、高可用的数据接入中台；3、参与电商数据流建设，流式数据的清洗、抽取、计算等，以及大规模数据的存储和更新；4、参与电商资源特征数据挖掘，包括页面价值度、热点变化趋势等，攻克各种挑战及技术难关。',NULL,NULL,'1、本科及以上学历，计算机、数学等相关专业；2、熟练掌握Linux环境下的Go/Python/Java/C/C++等1至2种以上语言，有良好的编程习惯及逻辑实现能力；3、熟悉Hadoop，Hive，Spark，Storm，Kafka等常用工具优先；4、熟悉Web前端技术，对Html5/Css/Js/Vue/React有了解者优先。5、每周可实习4天以上，可实习4个月以上。',NULL,NULL,'20k-30k','2022-10-13 19:13:54','2022-10-13 19:13:54'),(1580517236496531456,NULL,NULL,'Java开发工程师','1、参与电商基础数据建设，参与电商动态定价系统设计和搭建；2、参与电商分布式数据接入调度系统搭建及优化，打造高性能、高可用的数据接入中台；3、参与电商数据流建设，流式数据的清洗、抽取、计算等，以及大规模数据的存储和更新；4、参与电商资源特征数据挖掘，包括页面价值度、热点变化趋势等，攻克各种挑战及技术难关。',NULL,NULL,'1、本科及以上学历，计算机、数学等相关专业；2、熟练掌握Linux环境下的Go/Python/Java/C/C++等1至2种以上语言，有良好的编程习惯及逻辑实现能力；3、熟悉Hadoop，Hive，Spark，Storm，Kafka等常用工具优先；4、熟悉Web前端技术，对Html5/Css/Js/Vue/React有了解者优先。5、每周可实习4天以上，可实习4个月以上。',NULL,NULL,'20k-30k','2022-10-13 19:14:08','2022-10-13 19:14:08'),(1580517241957515264,NULL,NULL,'Java开发工程师','1、参与电商基础数据建设，参与电商动态定价系统设计和搭建；2、参与电商分布式数据接入调度系统搭建及优化，打造高性能、高可用的数据接入中台；3、参与电商数据流建设，流式数据的清洗、抽取、计算等，以及大规模数据的存储和更新；4、参与电商资源特征数据挖掘，包括页面价值度、热点变化趋势等，攻克各种挑战及技术难关。',NULL,NULL,'1、本科及以上学历，计算机、数学等相关专业；2、熟练掌握Linux环境下的Go/Python/Java/C/C++等1至2种以上语言，有良好的编程习惯及逻辑实现能力；3、熟悉Hadoop，Hive，Spark，Storm，Kafka等常用工具优先；4、熟悉Web前端技术，对Html5/Css/Js/Vue/React有了解者优先。5、每周可实习4天以上，可实习4个月以上。',NULL,NULL,'20k-30k','2022-10-13 19:14:10','2022-10-13 19:14:10'),(1580517244566372352,NULL,NULL,'Java开发工程师','1、参与电商基础数据建设，参与电商动态定价系统设计和搭建；2、参与电商分布式数据接入调度系统搭建及优化，打造高性能、高可用的数据接入中台；3、参与电商数据流建设，流式数据的清洗、抽取、计算等，以及大规模数据的存储和更新；4、参与电商资源特征数据挖掘，包括页面价值度、热点变化趋势等，攻克各种挑战及技术难关。',NULL,NULL,'1、本科及以上学历，计算机、数学等相关专业；2、熟练掌握Linux环境下的Go/Python/Java/C/C++等1至2种以上语言，有良好的编程习惯及逻辑实现能力；3、熟悉Hadoop，Hive，Spark，Storm，Kafka等常用工具优先；4、熟悉Web前端技术，对Html5/Css/Js/Vue/React有了解者优先。5、每周可实习4天以上，可实习4个月以上。',NULL,NULL,'20k-30k','2022-10-13 19:14:10','2022-10-13 19:14:10'),(1580519219275108354,NULL,NULL,'Java开发工程师','1、参与电商基础数据建设，参与电商动态定价系统设计和搭建；2、参与电商分布式数据接入调度系统搭建及优化，打造高性能、高可用的数据接入中台；3、参与电商数据流建设，流式数据的清洗、抽取、计算等，以及大规模数据的存储和更新；4、参与电商资源特征数据挖掘，包括页面价值度、热点变化趋势等，攻克各种挑战及技术难关。',NULL,NULL,'1、本科及以上学历，计算机、数学等相关专业；2、熟练掌握Linux环境下的Go/Python/Java/C/C++等1至2种以上语言，有良好的编程习惯及逻辑实现能力；3、熟悉Hadoop，Hive，Spark，Storm，Kafka等常用工具优先；4、熟悉Web前端技术，对Html5/Css/Js/Vue/React有了解者优先。5、每周可实习4天以上，可实习4个月以上。',NULL,NULL,'20k-30k','2022-10-13 19:22:01','2022-10-13 19:22:01'),(1580519221602947074,NULL,NULL,'Java开发工程师','1、参与电商基础数据建设，参与电商动态定价系统设计和搭建；2、参与电商分布式数据接入调度系统搭建及优化，打造高性能、高可用的数据接入中台；3、参与电商数据流建设，流式数据的清洗、抽取、计算等，以及大规模数据的存储和更新；4、参与电商资源特征数据挖掘，包括页面价值度、热点变化趋势等，攻克各种挑战及技术难关。',NULL,NULL,'1、本科及以上学历，计算机、数学等相关专业；2、熟练掌握Linux环境下的Go/Python/Java/C/C++等1至2种以上语言，有良好的编程习惯及逻辑实现能力；3、熟悉Hadoop，Hive，Spark，Storm，Kafka等常用工具优先；4、熟悉Web前端技术，对Html5/Css/Js/Vue/React有了解者优先。5、每周可实习4天以上，可实习4个月以上。',NULL,NULL,'20k-30k','2022-10-13 19:22:02','2022-10-13 19:22:02'),(1580519852194529280,NULL,NULL,'Java开发工程师','1、参与电商基础数据建设，参与电商动态定价系统设计和搭建；2、参与电商分布式数据接入调度系统搭建及优化，打造高性能、高可用的数据接入中台；3、参与电商数据流建设，流式数据的清洗、抽取、计算等，以及大规模数据的存储和更新；4、参与电商资源特征数据挖掘，包括页面价值度、热点变化趋势等，攻克各种挑战及技术难关。',NULL,NULL,'1、本科及以上学历，计算机、数学等相关专业；2、熟练掌握Linux环境下的Go/Python/Java/C/C++等1至2种以上语言，有良好的编程习惯及逻辑实现能力；3、熟悉Hadoop，Hive，Spark，Storm，Kafka等常用工具优先；4、熟悉Web前端技术，对Html5/Css/Js/Vue/React有了解者优先。5、每周可实习4天以上，可实习4个月以上。',NULL,NULL,'20k-30k','2022-10-13 19:24:32','2022-10-13 19:24:32'),(1581624250719141888,NULL,NULL,'Java开发工程师','1、参与电商基础数据建设，参与电商动态定价系统设计和搭建；2、参与电商分布式数据接入调度系统搭建及优化，打造高性能、高可用的数据接入中台；3、参与电商数据流建设，流式数据的清洗、抽取、计算等，以及大规模数据的存储和更新；4、参与电商资源特征数据挖掘，包括页面价值度、热点变化趋势等，攻克各种挑战及技术难关。',NULL,NULL,'1、本科及以上学历，计算机、数学等相关专业；2、熟练掌握Linux环境下的Go/Python/Java/C/C++等1至2种以上语言，有良好的编程习惯及逻辑实现能力；3、熟悉Hadoop，Hive，Spark，Storm，Kafka等常用工具优先；4、熟悉Web前端技术，对Html5/Css/Js/Vue/React有了解者优先。5、每周可实习4天以上，可实习4个月以上。',NULL,NULL,'20k-30k','2022-10-16 20:33:01','2022-10-16 20:33:01');
 /*!40000 ALTER TABLE `t_position` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -5082,12 +5118,10 @@ DROP TABLE IF EXISTS `t_recruiter`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `t_recruiter` (
   `id` bigint NOT NULL,
+  `company_id` bigint DEFAULT NULL,
   `recruiter_name` varchar(4) DEFAULT NULL,
   `sex` tinyint DEFAULT NULL,
   `job_title` varchar(10) DEFAULT NULL,
-  `company_name` varchar(20) DEFAULT NULL,
-  `company_address` varchar(20) DEFAULT NULL,
-  `company_type` varchar(10) DEFAULT NULL,
   `create_time` datetime DEFAULT NULL,
   `update_time` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
@@ -5113,4 +5147,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-10-14 21:26:20
+-- Dump completed on 2022-10-17 11:06:06
