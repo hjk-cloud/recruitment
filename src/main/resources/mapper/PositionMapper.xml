@@ -24,40 +24,6 @@
         highlight,category,threshold,keyword,address,
         salary_range
     </sql>
-    <insert id="insert">
-        insert into t_position
-        <trim prefix="(" suffix=")" suffixOverrides=",">
-            <if test="id != null">id,</if>
-            <if test="recruiterId != null">recruiter_id,</if>
-            <if test="companyId != null">company_id,</if>
-            <if test="name != null">position_name,</if>
-            <if test="description != null">description,</if>
-            <if test="highlight != null">highlight,</if>
-            <if test="category != null">category,</if>
-            <if test="threshold != null">threshold,</if>
-            <if test="keyword != null">keyword,</if>
-            <if test="address != null">address,</if>
-            <if test="salaryRange != null">salary_range,</if>
-            <if test="createTime != null">,</if>
-            <if test="updateTime != null">,</if>
-        </trim>
-        values
-        <trim prefix="(" suffix=")" suffixOverrides=",">
-            <if test="id != null">#{id,jdbcType=INTEGER},</if>
-            <if test="recruiterId != null">#{recruiterId,jdbcType=VARCHAR},</if>
-            <if test="companyId != null">#{companyId,jdbcType=VARCHAR},</if>
-            <if test="name != null">#{name,jdbcType=VARCHAR},</if>
-            <if test="description != null">#{description,jdbcType=VARCHAR},</if>
-            <if test="highlight != null">#{highlight,jdbcType=VARCHAR},</if>
-            <if test="category != null">#{category,jdbcType=VARCHAR},</if>
-            <if test="threshold != null">#{threshold,jdbcType=VARCHAR},</if>
-            <if test="keyword != null">#{keyword,jdbcType=VARCHAR},</if>
-            <if test="address != null">#{address,jdbcType=VARCHAR},</if>
-            <if test="salaryRange != null">#{salaryRange,jdbcType=VARCHAR},</if>
-            <if test="createTime != null">#{createTime,jdbcType=TIMESTAMP},</if>
-            <if test="updateTime != null">#{updateTime,jdbcType=TIMESTAMP},</if>
-        </trim>
-    </insert>
     <select id="selectLikeName" resultType="edu.lnu.recruitment.modules.position.entity.Position">
         select<include refid="Base_Column_List"/>
         from t_position
@@ -123,34 +89,6 @@
         from t_position
         where
         salary_range like #{salaryRange}
-    </select>
-    <delete id="delete">
-        delete from t_position
-        where
-        id = #{id,jdbcType=NUMERIC}
-    </delete>
-    <update id="update">
-     update t_position
-      <set>
-        <if test="recruiterId != null">recruiter_id=#{recruiterId}</if>
-        <if test="companyId != null">company_id=#{companyId},</if>
-        <if test="name != null">position_name=#{name},</if>
-        <if test="description != null">description=#{description},</if>
-        <if test="highlight != null">highlight=#{highlight},</if>
-        <if test="category != null">category=#{category},</if>
-        <if test="threshold != null">threshold=#{threshold},</if>
-        <if test="keyword != null">keyword=#{keyword},</if>
-        <if test="address != null">address=#{address},</if>
-        <if test="salaryRange != null">salary_range=#{salaryRange},</if>
-      </set>
-        where id = #{id}
-    </update>
-    <select id="selectById" resultMap="BaseResultMap">
-        select
-        <include refid="Base_Column_List"/>
-        from t_position
-        where
-        id = #{id,jdbcType=NUMERIC}
     </select>
     <select id="selectAllByRecruiterId" resultMap="BaseResultMap">
         select
