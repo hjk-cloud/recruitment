@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="edu.lnu.recruitment.modules.position.mapper.PositionMapper">
+
+    <resultMap id="BaseResultMap" type="edu.lnu.recruitment.modules.position.entity.Position" >
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="recruiter_id" jdbcType="BIGINT" property="recruiterId"/>
+        <result column="company_id" jdbcType="BIGINT" property="companyId"/>
+        <result column="description" jdbcType="VARCHAR" property="description"/>
+        <result column="highlight" jdbcType="VARCHAR" property="highlight"/>
+        <result column="category" jdbcType="VARCHAR" property="category"/>
+        <result column="threshold" jdbcType="VARCHAR" property="threshold"/>
+        <result column="keyword" jdbcType="VARCHAR" property="keyword"/>
+        <result column="address" jdbcType="VARCHAR" property="address"/>
+        <result column="salary_range" jdbcType="VARCHAR" property="salaryRange"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,
+        position_name,
+        position_description,
+        highlight,category,threshold,keyword,address,
+        salary_range
+    </sql>
+    <insert id="insert">
+        insert into t_position
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">id,</if>
+            <if test="recruiterId != null">recruiter_id,</if>
+            <if test="companyId != null">company_id,</if>
+            <if test="name != null">position_name,</if>
+            <if test="description != null">description,</if>
+            <if test="highlight != null">highlight,</if>
+            <if test="category != null">category,</if>
+            <if test="threshold != null">threshold,</if>
+            <if test="keyword != null">keyword,</if>
+            <if test="address != null">address,</if>
+            <if test="salaryRange != null">salary_range,</if>
+            <if test="createTime != null">,</if>
+            <if test="updateTime != null">,</if>
+        </trim>
+        values
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">#{id,jdbcType=INTEGER},</if>
+            <if test="recruiterId != null">#{recruiterId,jdbcType=VARCHAR},</if>
+            <if test="companyId != null">#{companyId,jdbcType=VARCHAR},</if>
+            <if test="name != null">#{name,jdbcType=VARCHAR},</if>
+            <if test="description != null">#{description,jdbcType=VARCHAR},</if>
+            <if test="highlight != null">#{highlight,jdbcType=VARCHAR},</if>
+            <if test="category != null">#{category,jdbcType=VARCHAR},</if>
+            <if test="threshold != null">#{threshold,jdbcType=VARCHAR},</if>
+            <if test="keyword != null">#{keyword,jdbcType=VARCHAR},</if>
+            <if test="address != null">#{address,jdbcType=VARCHAR},</if>
+            <if test="salaryRange != null">#{salaryRange,jdbcType=VARCHAR},</if>
+            <if test="createTime != null">#{createTime,jdbcType=TIMESTAMP},</if>
+            <if test="updateTime != null">#{updateTime,jdbcType=TIMESTAMP},</if>
+        </trim>
+    </insert>
+    <select id="selectLikeName" resultType="edu.lnu.recruitment.modules.position.entity.Position">
+        select<include refid="Base_Column_List"/>
+        from t_position
+        where position_name like #{name}
+    </select>
+
+    <select id="selectLikeCategory" resultType="edu.lnu.recruitment.modules.position.entity.Position">
+        select<include refid="Base_Column_List"/>
+        from t_position
+        where category like #{category}
+    </select>
+
+    <select id="selectLikeThreshold" resultType="edu.lnu.recruitment.modules.position.entity.Position">
+        select<include refid="Base_Column_List"/>
+        from t_position
+        where threshold like #{threshold}
+    </select>
+    z<select id="selectAllByName" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from t_position
+        where
+        position_name = #{name,jdbcType=VARCHAR}
+    </select>
+    <select id="selectAllByCategory" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from t_position
+        where
+        category = #{category,jdbcType=VARCHAR}
+    </select>
+    <select id="selectAllByThreshold" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from t_position
+        where
+        threshold = #{threshold,jdbcType=VARCHAR}
+    </select>
+    <select id="selectAllByKeyword" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from t_position
+        where
+        keyword = #{keyword,jdbcType=VARCHAR}
+    </select>
+    <select id="selectAllByAddress" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from t_position
+        where
+        address = #{address,jdbcType=VARCHAR}
+    </select>
+    <select id="selectAllBySalaryRange" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from t_position
+        where
+        salary_range = #{salaryRange,jdbcType=VARCHAR}
+    </select>
+    <delete id="delete">
+        delete from t_position
+        where
+        id = #{id,jdbcType=NUMERIC}
+    </delete>
+    <update id="update">
+     update t_position
+      <set>
+        <if test="recruiterId != null">recruiter_id=#{recruiterId}</if>
+        <if test="companyId != null">company_id=#{companyId},</if>
+        <if test="name != null">position_name=#{name},</if>
+        <if test="description != null">description=#{description},</if>
+        <if test="highlight != null">highlight=#{highlight},</if>
+        <if test="category != null">category=#{category},</if>
+        <if test="threshold != null">threshold=#{threshold},</if>
+        <if test="keyword != null">keyword=#{keyword},</if>
+        <if test="address != null">address=#{address},</if>
+        <if test="salaryRange != null">salary_range=#{salaryRange},</if>
+      </set>
+        where id = #{id}
+    </update>
+    <select id="selectById" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from t_position
+        where
+        id = #{id,jdbcType=NUMERIC}
+    </select>
+    <select id="selectAllByRecruiterId" resultMap="BaseResultMap">
+        select
+        t_position.*
+        from t_position left join t_recruiter
+        on
+        t_position.recruiter_id=t_recruiter.id
+        where
+        recruiter_id=#{recruiterId}
+    </select>
+    <select id="selectAllByCompanyId" resultMap="BaseResultMap">
+        select
+        t_position.*
+        from t_position left join t_company
+        on
+        t_position.company_id=t_company.id
+        where
+        company_id=#{companyId}
+    </select>
+
+
+</mapper>

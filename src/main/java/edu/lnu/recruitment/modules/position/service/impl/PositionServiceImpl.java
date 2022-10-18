@@ -1,7 +1,9 @@
 package edu.lnu.recruitment.modules.position.service.impl;
 
 import cn.hutool.core.lang.Snowflake;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import edu.lnu.recruitment.modules.position.entity.Position;
 import edu.lnu.recruitment.modules.position.mapper.PositionMapper;
 import edu.lnu.recruitment.modules.position.service.PositionService;
@@ -19,7 +21,7 @@ import java.util.Map;
  * @Description:
  */
 @Service
-public class PositionServiceImpl implements PositionService {
+public class PositionServiceImpl extends ServiceImpl<PositionMapper, Position>implements PositionService {
 
     @Autowired
     private PositionMapper positionMapper;
@@ -38,6 +40,82 @@ public class PositionServiceImpl implements PositionService {
         Page<Position> page = new Page<>(pageNum, size);
         positionMapper.selectPage(page, null);
         return page.getRecords();
+    }
+
+    @Override
+    public boolean insert(Position position) {
+        return positionMapper.insert(position)>0;
+    }
+
+    @Override
+    public boolean delete(long id) {
+        return positionMapper.deleteById(id)>0;
+    }
+
+    @Override
+    public boolean update(Position position) {
+        return positionMapper.updateById(position)>0;
+    }
+
+    @Override
+    public Position selectById(long id) {
+        return positionMapper.selectById(id);
+    }
+
+    @Override
+    public List<Position> selectAllPosition() {
+        return positionMapper.selectList(null);
+    }
+
+    @Override
+    public List<Position> selectAllByName(String name) {
+        return positionMapper.selectAllByName(name);
+    }
+
+    @Override
+    public List<Position> selectLikeName(String name) {
+
+        return positionMapper.selectLikeName(name);
+    }
+
+    @Override
+    public List<Position> selectAllByCategory(String category) {
+        return positionMapper.selectAllByCategory(category);
+    }
+
+    @Override
+    public List<Position> selectLikeCategory(String category) {
+        return positionMapper.selectLikeCategory(category);
+    }
+
+    @Override
+    public List<Position> selectAllByThreshold(String threshold) {
+        return positionMapper.selectAllByThreshold(threshold);
+    }
+
+    @Override
+    public List<Position> selectAllByKeyword(String keyword) {
+        return positionMapper.selectAllByKeyword(keyword);
+    }
+
+    @Override
+    public List<Position> selectAllByAddress(String address) {
+        return positionMapper.selectAllByAddress(address);
+    }
+
+    @Override
+    public List<Position> selectAllBySalaryRange(String salaryRange) {
+        return positionMapper.selectAllBySalaryRange(salaryRange);
+    }
+
+    @Override
+    public List<Position> selectAllByRecruiterId(long recruiterId) {
+        return positionMapper.selectAllByRecruiterId(recruiterId);
+    }
+
+    @Override
+    public List<Position> selectAllByCompanyId(long companyId) {
+        return positionMapper.selectAllByCompanyId(companyId);
     }
 
 

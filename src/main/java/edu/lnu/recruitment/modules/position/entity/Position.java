@@ -17,9 +17,13 @@ import java.util.Date;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@TableName("t_position")
+@TableName(value="t_position")
 public class Position {
-    private Long id;
+    private long id;
+    @TableField(value = "recruiter_id")
+    private long recruiterId;
+    @TableField(value = "company_id")
+    private long companyId;
 
     @TableField(value = "position_name")
     private String name;
