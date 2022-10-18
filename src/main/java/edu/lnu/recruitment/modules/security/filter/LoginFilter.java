@@ -1,9 +1,7 @@
 package edu.lnu.recruitment.modules.security.filter;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.sun.javafx.collections.MappingChange;
 import edu.lnu.recruitment.modules.security.exception.KaptchaNotMatchException;
-
 import lombok.Data;
 import org.springframework.http.MediaType;
 import org.springframework.security.authentication.AuthenticationServiceException;
@@ -11,12 +9,10 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-import org.springframework.stereotype.Component;
 import org.springframework.util.ObjectUtils;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.awt.*;
 import java.io.IOException;
 import java.util.Map;
 
