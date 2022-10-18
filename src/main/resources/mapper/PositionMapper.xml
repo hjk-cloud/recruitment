@@ -75,7 +75,7 @@
         from t_position
         where threshold like #{threshold}
     </select>
-    z<select id="selectAllByName" resultMap="BaseResultMap">
+    <select id="selectAllByName" resultMap="BaseResultMap">
         select
         <include refid="Base_Column_List"/>
         from t_position
@@ -116,6 +116,13 @@
         from t_position
         where
         salary_range = #{salaryRange,jdbcType=VARCHAR}
+    </select>
+    <select id="selectLikeSalaryRange" resultType="edu.lnu.recruitment.modules.position.entity.Position">
+        select
+        <include refid="Base_Column_List"/>
+        from t_position
+        where
+        salary_range like #{salaryRange}
     </select>
     <delete id="delete">
         delete from t_position

@@ -109,6 +109,11 @@ public class PositionServiceImpl extends ServiceImpl<PositionMapper, Position>im
     }
 
     @Override
+    public List<Position> selectLikeSalaryRange(String salaryRange) {
+        return positionMapper.selectLikeSalaryRange(salaryRange);
+    }
+
+    @Override
     public List<Position> selectAllByRecruiterId(long recruiterId) {
         return positionMapper.selectAllByRecruiterId(recruiterId);
     }

@@ -2,6 +2,7 @@ package edu.lnu.recruitment.modules.position.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import edu.lnu.recruitment.modules.position.entity.Position;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -74,6 +75,7 @@ public interface PositionService extends IService<Position> {
      * 根据薪资范围查询整个职位信息列表
      */
     List<Position> selectAllBySalaryRange(String salaryRange);
+    List<Position> selectLikeSalaryRange(String salaryRange);
     /**
      * 根据recruiterId查询整个职位信息列表
      */

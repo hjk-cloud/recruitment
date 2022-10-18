@@ -17,7 +17,6 @@ import java.util.List;
  * @Description:
  */
 @Mapper
-@Repository
 public interface PositionMapper extends BaseMapper<Position> {
     /**
      * 增
@@ -71,6 +70,12 @@ public interface PositionMapper extends BaseMapper<Position> {
      * 根据薪资范围查询整个职位信息列表
      */
     List<Position> selectAllBySalaryRange(@Param("salaryRange") String salaryRange);
+    /**
+     * 根据薪资范围模糊查询整个职位信息列表
+     */
+
+    List<Position> selectLikeSalaryRange(String salaryRange);
+
     /**
      * 根据recruiterId查询整个职位信息列表
      */

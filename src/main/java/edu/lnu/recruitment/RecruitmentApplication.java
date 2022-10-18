@@ -5,7 +5,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-//@MapperScan("edu.lnu.recruitment.modules.position.mapper")
+@MapperScan("edu.lnu.recruitment.modules.position.mapper")
 public class RecruitmentApplication {
 
     public static void main(String[] args) {
