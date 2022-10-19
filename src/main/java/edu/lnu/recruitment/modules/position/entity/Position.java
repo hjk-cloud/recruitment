@@ -20,9 +20,9 @@ import java.util.Date;
 @TableName(value="t_position")
 public class Position {
     private long id;
-    @TableField(value = "recruiter_id")
+
     private long recruiterId;
-    @TableField(value = "company_id")
+
     private long companyId;
 
     @TableField(value = "position_name")
@@ -41,7 +41,9 @@ public class Position {
 
     private String address;
 
-    private String salaryRange;
+    private String minSalary;
+
+    private String maxSalary;
 
     @TableField(fill = FieldFill.INSERT)
     private Date createTime;

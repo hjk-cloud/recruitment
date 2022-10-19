@@ -50,7 +50,7 @@ public interface PositionService extends IService<Position> {
     /**
      * 根据职业名称模糊查询整个职位信息列表
      */
-    List<Position> selectLikeName(String name);
+    List<Position> selectLikeParams(Map<String, Object> params);
     /**
      * 根据职业类别查询整个职位信息列表
      */
@@ -75,6 +75,7 @@ public interface PositionService extends IService<Position> {
      * 根据薪资范围查询整个职位信息列表
      */
     List<Position> selectAllBySalaryRange(String salaryRange);
+
     List<Position> selectLikeSalaryRange(String salaryRange);
     /**
      * 根据recruiterId查询整个职位信息列表

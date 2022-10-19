@@ -26,6 +26,9 @@ public class PositionServiceImpl extends ServiceImpl<PositionMapper, Position>im
     @Autowired
     private PositionMapper positionMapper;
 
+
+    QueryWrapper<Position> wrapper = new QueryWrapper<>();
+
     @Override
     public boolean save(Position position) {
         position.setId(new Snowflake(0, 1).nextId());
@@ -73,9 +76,21 @@ public class PositionServiceImpl extends ServiceImpl<PositionMapper, Position>im
     }
 
     @Override
-    public List<Position> selectLikeName(String name) {
+    public List<Position> selectLikeParams(Map<String, Object> params) {
+        if(params.containsKey("name")) {
+            String name = (String) params.get("name");
+            wrapper = wrapper.like("position_name", name);
+        }
+        if(params.containsKey("address")) {
+            String address = (String) params.get("address");
+            wrapper = wrapper.eq("address", address);
+        }
+        if (params.containsKey("category")) {
+            String address = (String) params.get("category");
+            wrapper = wrapper.like("category", address);
+        }
 
-        return positionMapper.selectLikeName(name);
+        return positionMapper.selectList(wrapper);
     }
 
     @Override

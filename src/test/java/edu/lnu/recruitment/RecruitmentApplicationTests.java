@@ -13,7 +13,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import java.util.List;
 
 @SpringBootTest
-@MapperScan("edu.lnu.recruitment.modules.*.mapper")
 class RecruitmentApplicationTests {
 
     @Autowired
@@ -29,7 +28,9 @@ class RecruitmentApplicationTests {
     }
     @Test
     public void testselectLikeName(){
-        List<Position> users =positionMapper.selectLikeName("%开发%");
+        QueryWrapper<Position> wrapper = new QueryWrapper<>();
+        wrapper.like("position_name", "开发");
+        List<Position> users =positionMapper.selectList(wrapper);
         users.forEach(System.out::println);
     }
     @Test

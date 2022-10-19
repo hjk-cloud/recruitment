@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import edu.lnu.recruitment.common.utils.R;
 import edu.lnu.recruitment.modules.position.entity.Position;
 import edu.lnu.recruitment.modules.position.service.PositionService;
+import javafx.geometry.Pos;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -36,10 +37,14 @@ public class PositionController {
 
     @RequestMapping("/list")
     public R list(@RequestBody Map<String, Object> params) {
-        System.out.println(params.toString());
         List<Position> page = positionService.queryPage(params);
         return R.ok().put("page", page);
     }
 
+    @RequestMapping("/queryLikeName")
+    public R queryLikeName(@RequestBody Map<String, Object> params) {
+        List<Position> list = positionService.selectLikeParams(params);
+        return R.ok().put("list", list);
+    }
 
 }
