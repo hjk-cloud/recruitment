@@ -3,6 +3,8 @@ package edu.lnu.recruitment.modules.security.loginandauthority.login.controller;
 import com.google.code.kaptcha.Producer;
 import org.apache.tomcat.util.codec.binary.Base64;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.util.FastByteArrayOutputStream;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -44,5 +46,12 @@ public class VerifyCodeController {
         ImageIO.write(bi, "jpg", fos);
         //4.返回 base64
         return Base64.encodeBase64String(fos.toByteArray());
+    }
+
+    @GetMapping("/test")
+    @PreAuthorize("hasAnyAuthority('admin')")
+    //@Secured({"admin"})未处理
+    public void test(){
+        System.out.println("权限测试");
     }
 }

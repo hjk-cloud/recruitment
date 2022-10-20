@@ -2,9 +2,9 @@ package edu.lnu.recruitment.modules.security.loginandauthority.login.service.imp
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 
+import edu.lnu.recruitment.modules.security.loginandauthority.login.entity.Role;
 import edu.lnu.recruitment.modules.security.loginandauthority.login.entity.User;
 import edu.lnu.recruitment.modules.security.loginandauthority.login.mapper.RoleDao;
-import edu.lnu.recruitment.modules.security.loginandauthority.login.mapper.URDao;
 import edu.lnu.recruitment.modules.security.loginandauthority.login.mapper.UserDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -32,11 +32,8 @@ public class MyUserDetailService implements UserDetailsService {
     @Autowired
     private UserDao userDao;
 
-    @Autowired
-    private URDao urDao;
 
-    @Autowired
-    private RoleDao roleDao;
+
 
     //1.springsecurity内置登录方法
     @Override
@@ -48,10 +45,9 @@ public class MyUserDetailService implements UserDetailsService {
         if(Objects.isNull(user)){
             throw new RuntimeException("该用户不存在，请检查账号");
         }
-        //查询用户对应的权限信息,连表查询待处理
-//        System.out.println(user.getUsername());
-//        List<Role> roles = userDao.findRole(user.getUserid());
-//        user.setRoles(roles);
+        //查询用户对应的权限信息,连表查询
+        List<Role> roles = userDao.findUserRoles(user.getUserid());
+        user.setRoles(roles);
         //将返回结果以UserDetails返回
         return user;
     }
