@@ -21,13 +21,12 @@ import java.util.Map;
  * @Description:
  */
 @Service
-public class PositionServiceImpl extends ServiceImpl<PositionMapper, Position>implements PositionService {
+public class PositionServiceImpl extends ServiceImpl<PositionMapper, Position> implements PositionService {
+
+    private QueryWrapper<Position> wrapper = new QueryWrapper<>();
 
     @Autowired
     private PositionMapper positionMapper;
-
-
-    QueryWrapper<Position> wrapper = new QueryWrapper<>();
 
     @Override
     public boolean save(Position position) {
@@ -46,97 +45,29 @@ public class PositionServiceImpl extends ServiceImpl<PositionMapper, Position>im
     }
 
     @Override
-    public boolean insert(Position position) {
-        return positionMapper.insert(position)>0;
-    }
-
-    @Override
-    public boolean delete(long id) {
-        return positionMapper.deleteById(id)>0;
-    }
-
-    @Override
-    public boolean update(Position position) {
-        return positionMapper.updateById(position)>0;
-    }
-
-    @Override
-    public Position selectById(long id) {
-        return positionMapper.selectById(id);
-    }
-
-    @Override
-    public List<Position> selectAllPosition() {
-        return positionMapper.selectList(null);
-    }
-
-    @Override
-    public List<Position> selectAllByName(String name) {
-        return positionMapper.selectAllByName(name);
-    }
-
-    @Override
-    public List<Position> selectLikeParams(Map<String, Object> params) {
-        if(params.containsKey("name")) {
+    public List<Position> queryPageByConditions(Map<String, Object> params) {
+        int pageNum = (int) params.get("page");
+        int size = (int) params.get("size");
+        if (params.containsKey("name")) {
             String name = (String) params.get("name");
             wrapper = wrapper.like("position_name", name);
         }
-        if(params.containsKey("address")) {
+        if (params.containsKey("address")) {
             String address = (String) params.get("address");
             wrapper = wrapper.eq("address", address);
         }
         if (params.containsKey("category")) {
-            String address = (String) params.get("category");
-            wrapper = wrapper.like("category", address);
+            String category = (String) params.get("category");
+            wrapper = wrapper.like("category", category);
         }
+        /*TODO
+           增加各条件的模糊查询
+           变量名称对应相关字段好吧，上边已经改过来了
+        */
 
-        return positionMapper.selectList(wrapper);
+        Page<Position> page = new Page<>(pageNum, size);
+        positionMapper.selectPage(page, wrapper);
+        return page.getRecords();
     }
-
-    @Override
-    public List<Position> selectAllByCategory(String category) {
-        return positionMapper.selectAllByCategory(category);
-    }
-
-    @Override
-    public List<Position> selectLikeCategory(String category) {
-        return positionMapper.selectLikeCategory(category);
-    }
-
-    @Override
-    public List<Position> selectAllByThreshold(String threshold) {
-        return positionMapper.selectAllByThreshold(threshold);
-    }
-
-    @Override
-    public List<Position> selectAllByKeyword(String keyword) {
-        return positionMapper.selectAllByKeyword(keyword);
-    }
-
-    @Override
-    public List<Position> selectAllByAddress(String address) {
-        return positionMapper.selectAllByAddress(address);
-    }
-
-    @Override
-    public List<Position> selectAllBySalaryRange(String salaryRange) {
-        return positionMapper.selectAllBySalaryRange(salaryRange);
-    }
-
-    @Override
-    public List<Position> selectLikeSalaryRange(String salaryRange) {
-        return positionMapper.selectLikeSalaryRange(salaryRange);
-    }
-
-    @Override
-    public List<Position> selectAllByRecruiterId(long recruiterId) {
-        return positionMapper.selectAllByRecruiterId(recruiterId);
-    }
-
-    @Override
-    public List<Position> selectAllByCompanyId(long companyId) {
-        return positionMapper.selectAllByCompanyId(companyId);
-    }
-
 
 }

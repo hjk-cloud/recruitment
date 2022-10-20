@@ -1,7 +1,7 @@
 package edu.lnu.recruitment.common.utils;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.redis.core.*;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Component;
 import org.springframework.util.CollectionUtils;
 
@@ -24,6 +24,7 @@ public class RedisUtil {
     @Autowired
     private RedisTemplate<String, Object> redisTemplate;
     // =============================Common 基础============================
+
     /**
      * 指定缓存失效时间
      *
@@ -41,6 +42,7 @@ public class RedisUtil {
             return false;
         }
     }
+
     /**
      * 根据key 获取过期时间
      *
@@ -51,6 +53,7 @@ public class RedisUtil {
         // 如果返回值为 null，则返回 0L
         return redisTemplate.getExpire(key, TimeUnit.SECONDS);
     }
+
     /**
      * 判断key是否存在
      *
@@ -65,6 +68,7 @@ public class RedisUtil {
             return false;
         }
     }
+
     /**
      * 删除缓存
      *
@@ -81,6 +85,7 @@ public class RedisUtil {
         }
     }
     // ============================String 字符串=============================
+
     /**
      * 普通缓存获取
      *
@@ -90,6 +95,7 @@ public class RedisUtil {
     public Object get(String key) {
         return key == null ? null : redisTemplate.opsForValue().get(key);
     }
+
     /**
      * 普通缓存放入
      *
@@ -106,6 +112,7 @@ public class RedisUtil {
             return false;
         }
     }
+
     /**
      * 普通缓存放入并设置时间
      *
@@ -128,6 +135,7 @@ public class RedisUtil {
             return false;
         }
     }
+
     /**
      * 递增
      *
@@ -140,6 +148,7 @@ public class RedisUtil {
         }
         return redisTemplate.opsForValue().increment(key, delta);
     }
+
     /**
      * 递减
      *
@@ -153,6 +162,7 @@ public class RedisUtil {
         return redisTemplate.opsForValue().increment(key, -delta);
     }
     // ===============================List 列表=================================
+
     /**
      * 获取list缓存的内容
      *
@@ -168,6 +178,7 @@ public class RedisUtil {
             return null;
         }
     }
+
     /**
      * 获取list缓存的长度
      *
@@ -181,6 +192,7 @@ public class RedisUtil {
             return 0;
         }
     }
+
     /**
      * 通过索引 获取list中的值
      *
@@ -196,6 +208,7 @@ public class RedisUtil {
             return null;
         }
     }
+
     /**
      * 将list放入缓存
      *
@@ -211,6 +224,7 @@ public class RedisUtil {
             return false;
         }
     }
+
     /**
      * 将list放入缓存
      *
@@ -230,6 +244,7 @@ public class RedisUtil {
             return false;
         }
     }
+
     /**
      * 将list放入缓存
      *
@@ -246,6 +261,7 @@ public class RedisUtil {
             return false;
         }
     }
+
     /**
      * 将list放入缓存
      *
@@ -266,6 +282,7 @@ public class RedisUtil {
             return false;
         }
     }
+
     /**
      * 根据索引修改list中的某条数据
      *
@@ -283,6 +300,7 @@ public class RedisUtil {
             return false;
         }
     }
+
     /**
      * 移除N个值为value
      *
@@ -300,6 +318,7 @@ public class RedisUtil {
         }
     }
     // ============================Set 集合=============================
+
     /**
      * 根据key获取Set中的所有值
      *
@@ -313,6 +332,7 @@ public class RedisUtil {
             return null;
         }
     }
+
     /**
      * 根据value从一个set中查询,是否存在
      *
@@ -328,6 +348,7 @@ public class RedisUtil {
             return false;
         }
     }
+
     /**
      * 将数据放入set缓存
      *
@@ -343,6 +364,7 @@ public class RedisUtil {
             return 0;
         }
     }
+
     /**
      * 将set数据放入缓存
      *
@@ -363,6 +385,7 @@ public class RedisUtil {
             return 0;
         }
     }
+
     /**
      * 获取set缓存的长度
      *
@@ -376,6 +399,7 @@ public class RedisUtil {
             return 0;
         }
     }
+
     /**
      * 移除值为value的
      *
@@ -392,6 +416,7 @@ public class RedisUtil {
         }
     }
     // ================================Hash 哈希=================================
+
     /**
      * HashGet
      *
@@ -401,6 +426,7 @@ public class RedisUtil {
     public Object hget(String key, String item) {
         return redisTemplate.opsForHash().get(key, item);
     }
+
     /**
      * 获取hashKey对应的所有键值
      *
@@ -410,6 +436,7 @@ public class RedisUtil {
     public Map<Object, Object> hmget(String key) {
         return redisTemplate.opsForHash().entries(key);
     }
+
     /**
      * HashSet
      *
@@ -425,6 +452,7 @@ public class RedisUtil {
             return false;
         }
     }
+
     /**
      * HashSet 并设置时间
      *
@@ -445,6 +473,7 @@ public class RedisUtil {
             return false;
         }
     }
+
     /**
      * 向一张hash表中放入数据,如果不存在将创建
      *
@@ -462,6 +491,7 @@ public class RedisUtil {
             return false;
         }
     }
+
     /**
      * 向一张hash表中放入数据,如果不存在将创建
      *
@@ -483,6 +513,7 @@ public class RedisUtil {
             return false;
         }
     }
+
     /**
      * 删除hash表中的值
      *
@@ -492,6 +523,7 @@ public class RedisUtil {
     public void hdel(String key, Object... item) {
         redisTemplate.opsForHash().delete(key, item);
     }
+
     /**
      * 判断hash表中是否有该项的值
      *
@@ -502,6 +534,7 @@ public class RedisUtil {
     public boolean hHasKey(String key, String item) {
         return redisTemplate.opsForHash().hasKey(key, item);
     }
+
     /**
      * hash递增 如果不存在,就会创建一个 并把新增后的值返回
      *
@@ -512,6 +545,7 @@ public class RedisUtil {
     public double hincr(String key, String item, double by) {
         return redisTemplate.opsForHash().increment(key, item, by);
     }
+
     /**
      * hash递减
      *

@@ -1,11 +1,8 @@
 package edu.lnu.recruitment.modules.position.controller;
 
-import cn.hutool.core.lang.Snowflake;
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import edu.lnu.recruitment.common.utils.R;
 import edu.lnu.recruitment.modules.position.entity.Position;
 import edu.lnu.recruitment.modules.position.service.PositionService;
-import javafx.geometry.Pos;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -37,14 +34,14 @@ public class PositionController {
 
     @RequestMapping("/list")
     public R list(@RequestBody Map<String, Object> params) {
-        List<Position> page = positionService.queryPage(params);
-        return R.ok().put("page", page);
+        List<Position> list = positionService.queryPage(params);
+        return R.ok().put("list", list);
     }
 
-    @RequestMapping("/queryLikeName")
-    public R queryLikeName(@RequestBody Map<String, Object> params) {
-        List<Position> list = positionService.selectLikeParams(params);
-        return R.ok().put("list", list);
+    @RequestMapping("/queryByConditions")
+    public R queryByConditions(@RequestBody Map<String, Object> params) {
+        List<Position> list = positionService.queryPageByConditions(params);
+        return R.ok().put("当前页", params.get("page")).put("list", list);
     }
 
 }
