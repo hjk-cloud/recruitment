@@ -23,7 +23,7 @@ import java.util.Map;
 @Service
 public class PositionServiceImpl extends ServiceImpl<PositionMapper, Position> implements PositionService {
 
-    private QueryWrapper<Position> wrapper = new QueryWrapper<>();
+
 
     @Autowired
     private PositionMapper positionMapper;
@@ -46,20 +46,33 @@ public class PositionServiceImpl extends ServiceImpl<PositionMapper, Position> i
 
     @Override
     public List<Position> queryPageByConditions(Map<String, Object> params) {
-        int pageNum = (int) params.get("page");
-        int size = (int) params.get("size");
+
+        QueryWrapper<Position> wrapper = new QueryWrapper<>();
+
+        int pageNum = Integer.parseInt((String)params.get("page"));
+        int size = Integer.parseInt((String)params.get("size"));
         if (params.containsKey("name")) {
             String name = (String) params.get("name");
             wrapper = wrapper.like("position_name", name);
         }
         if (params.containsKey("address")) {
             String address = (String) params.get("address");
-            wrapper = wrapper.eq("address", address);
+            wrapper = wrapper.like("address", address);
         }
         if (params.containsKey("category")) {
             String category = (String) params.get("category");
             wrapper = wrapper.like("category", category);
         }
+        if (params.containsKey("keyword")) {
+            String keyword = (String) params.get("keyword");
+            wrapper = wrapper.like(" keyword", keyword);
+        }
+        if (params.containsKey("salary")) {
+            int salary = (int) params.get("salary");
+            System.out.println(salary);
+            wrapper = wrapper.le("min_salary", salary).ge("max_salary", salary);
+        }
+
         /*TODO
            增加各条件的模糊查询
            变量名称对应相关字段好吧，上边已经改过来了
@@ -67,6 +80,7 @@ public class PositionServiceImpl extends ServiceImpl<PositionMapper, Position> i
 
         Page<Position> page = new Page<>(pageNum, size);
         positionMapper.selectPage(page, wrapper);
+
         return page.getRecords();
     }
 
