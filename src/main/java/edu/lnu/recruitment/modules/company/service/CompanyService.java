@@ -2,6 +2,9 @@ package edu.lnu.recruitment.modules.company.service;
 
 import edu.lnu.recruitment.modules.company.entity.Company;
 
+import java.util.List;
+import java.util.Map;
+
 /**
  * @Package: edu.lnu.recruitment.modules.company.service
  * @ClassName: CompanyService
@@ -14,5 +17,5 @@ public interface CompanyService {
 
     Company queryById(long id);
 
-
+    List<Company> queryPageByConditions(Map<String, Object> params);
 }
