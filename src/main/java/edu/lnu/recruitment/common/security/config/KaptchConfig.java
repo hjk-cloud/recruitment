@@ -1,6 +1,4 @@
-package edu.lnu.recruitment.modules.security.config;
-
-import org.springframework.context.annotation.Configuration;
+package edu.lnu.recruitment.common.security.config;
 
 import com.google.code.kaptcha.Producer;
 import com.google.code.kaptcha.impl.DefaultKaptcha;

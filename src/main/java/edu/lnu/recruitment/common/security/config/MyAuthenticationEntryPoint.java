@@ -1,4 +1,4 @@
-package edu.lnu.recruitment.modules.security.config;
+package edu.lnu.recruitment.common.security.config;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;

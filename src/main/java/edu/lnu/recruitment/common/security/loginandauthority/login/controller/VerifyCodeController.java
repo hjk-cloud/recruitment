@@ -1,9 +1,8 @@
-package edu.lnu.recruitment.modules.security.loginandauthority.login.controller;
+package edu.lnu.recruitment.common.security.loginandauthority.login.controller;
 
 import com.google.code.kaptcha.Producer;
 import org.apache.tomcat.util.codec.binary.Base64;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.util.FastByteArrayOutputStream;
 import org.springframework.web.bind.annotation.GetMapping;

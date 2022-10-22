@@ -1,4 +1,4 @@
-package edu.lnu.recruitment.modules.security.exception;
+package edu.lnu.recruitment.common.security.exception;
 
 import org.springframework.security.core.AuthenticationException;
 

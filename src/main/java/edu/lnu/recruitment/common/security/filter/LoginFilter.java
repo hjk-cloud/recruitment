@@ -1,7 +1,7 @@
-package edu.lnu.recruitment.modules.security.filter;
+package edu.lnu.recruitment.common.security.filter;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import edu.lnu.recruitment.modules.security.exception.KaptchaNotMatchException;
+import edu.lnu.recruitment.common.security.exception.KaptchaNotMatchException;
 import lombok.Data;
 import org.springframework.http.MediaType;
 import org.springframework.security.authentication.AuthenticationServiceException;

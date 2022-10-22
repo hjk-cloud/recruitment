@@ -1,4 +1,4 @@
-package edu.lnu.recruitment.modules.security.config;
+package edu.lnu.recruitment.common.security.config;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.http.HttpStatus;

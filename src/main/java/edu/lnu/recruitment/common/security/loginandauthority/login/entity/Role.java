@@ -1,4 +1,4 @@
-package edu.lnu.recruitment.modules.security.loginandauthority.login.entity;
+package edu.lnu.recruitment.common.security.loginandauthority.login.entity;
 
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
@@ -6,8 +6,6 @@ import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import java.util.Date;
 
 /**
  * @ClassName : Role

@@ -1,11 +1,9 @@
-package edu.lnu.recruitment.modules.security.loginandauthority.login.service.impl;
+package edu.lnu.recruitment.common.security.loginandauthority.login.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-
-import edu.lnu.recruitment.modules.security.loginandauthority.login.entity.Role;
-import edu.lnu.recruitment.modules.security.loginandauthority.login.entity.User;
-import edu.lnu.recruitment.modules.security.loginandauthority.login.mapper.RoleDao;
-import edu.lnu.recruitment.modules.security.loginandauthority.login.mapper.UserDao;
+import edu.lnu.recruitment.common.security.loginandauthority.login.entity.Role;
+import edu.lnu.recruitment.common.security.loginandauthority.login.entity.User;
+import edu.lnu.recruitment.common.security.loginandauthority.login.mapper.UserDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
