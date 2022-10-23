@@ -49,8 +49,8 @@ public class PositionServiceImpl extends ServiceImpl<PositionMapper, Position> i
 
         QueryWrapper<Position> wrapper = new QueryWrapper<>();
 
-        int pageNum = Integer.parseInt((String)params.get("page"));
-        int size = Integer.parseInt((String)params.get("size"));
+        int pageNum = (int) params.get("page");
+        int size = (int) params.get("size");
         if (params.containsKey("name")) {
             String name = (String) params.get("name");
             wrapper = wrapper.like("position_name", name);
