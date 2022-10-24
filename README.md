@@ -4,35 +4,47 @@
 ### 管理员 admin
 
 1. 审核公司信息(招聘者注册)
-4. 删除无效岗位
-5. 查看操作日志
-
-### 招聘者 recruiter
-
-1. CRUD招聘信息（1:N）
-2. 接收求职者简历(招聘者1: 岗位N: 求职者N)
-3. 筛选查看求职者
+2. 删除无效岗位
+3. 查看操作日志
 
 ### 求职者 candidate
 
 1. 上传简历附件/填写在线简历
-2. 投递简历(求职者N:岗位N)
-3. 浏览筛选职位列表
 4. 分享职位(选做)
-5. 投递记录，进度(已投递、初筛、一面、二面、hr面、)
-6. 查看浏览记录(选做)
 
-### 聊天功能
+### 注册模块
 
-   1.求职者与HR交流
+    recruiter：
+    
+    candidate：
 
-### 登录注册功能   
+### 个人信息
 
-​	springsecurity + jwt
+    candidate： 查看浏览记录     Redis：Zset存 candidate_id——（ **position_id/position** , time)
+                修改个人信息
+
+### 投递模块
+
+    recruiter：根据recruiter_id查看position列表，根据position_id查看求职者列表，查看附件简历，更新投递进度
+    
+    candidate：根据position_id投递简历，查看投递记录，进度
+
+### 职位管理
+
+1、对于每个recruiter，可根据recruiter_id查询到自己发布的position列表，根据position_id可对其修改、删除 2、recruiter可增加position
+
+### 职位查询
+
+1、Redis存放热门职位信息，展示在首页 2、根据条件对职位进行模糊查询
+
+### 实时聊天
+
+1.求职者与HR交流 查看candidate个人信息
 
 ## 数据库设计
 
 ### 管理员 admin
+
 用户id、用户名、密码
 
 ### 求职者 candidate
