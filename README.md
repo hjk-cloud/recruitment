@@ -14,28 +14,35 @@
 
 ### 注册模块
 
-    recruiter：
-    
-    candidate：
+recruiter：
+
+candidate：
 
 ### 个人信息
 
-    candidate： 查看浏览记录     Redis：Zset存 candidate_id——（ **position_id/position** , time)
-                修改个人信息
+candidate：
+
+查看浏览记录 Redis：Zset存 candidate_id——（ **position_id/position** , time)
+
+修改个人信息
 
 ### 投递模块
 
-    recruiter：根据recruiter_id查看position列表，根据position_id查看求职者列表，查看附件简历，更新投递进度
-    
-    candidate：根据position_id投递简历，查看投递记录，进度
+recruiter：根据recruiter_id查看position列表，根据position_id查看求职者列表，查看附件简历，更新投递进度
+
+candidate：根据position_id投递简历，查看投递记录，进度
 
 ### 职位管理
 
-1、对于每个recruiter，可根据recruiter_id查询到自己发布的position列表，根据position_id可对其修改、删除 2、recruiter可增加position
+1、对于每个recruiter，可根据recruiter_id查询到自己发布的position列表，根据position_id可对其修改、删除
+
+2、recruiter可增加position
 
 ### 职位查询
 
-1、Redis存放热门职位信息，展示在首页 2、根据条件对职位进行模糊查询
+1、Redis存放热门职位信息，展示在首页
+
+2、根据条件对职位进行模糊查询 ✔
 
 ### 实时聊天
 
