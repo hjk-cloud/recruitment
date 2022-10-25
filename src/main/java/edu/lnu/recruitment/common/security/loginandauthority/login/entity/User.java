@@ -36,6 +36,15 @@ public class User implements UserDetails {
     @TableField(exist=false)
     private List<Role> roles;//关系属性 用来存储当前用户所有角色信息
 
+    public User(Long userid, String username, String password) {
+        this.userid = userid;
+        this.username = username;
+        this.password = password;
+    }
+
+    public User() {
+
+    }
 
     //待研究
     //返回权限信息
