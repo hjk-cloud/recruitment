@@ -70,6 +70,12 @@ public class RecruiterServiceImpl implements RecruiterService {
             recruiterMapper.insert(recruiter);
         }
 
+        /**
+         * 更新用户和角色中间表
+         */
+        userDao.insertUserRole(commonId, 3, new Snowflake(0, 1).nextId());
+
+
 
     }
 }

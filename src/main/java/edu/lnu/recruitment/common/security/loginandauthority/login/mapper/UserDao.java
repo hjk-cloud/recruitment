@@ -14,5 +14,7 @@ import java.util.List;
 public interface UserDao extends BaseMapper<User> {
     //处理mybaitsplus无法处理的连表查询
     List<Role> findUserRoles(Long userid);
+    //更新用户角色中间表
+    void insertUserRole(Long userid, Integer roleid, Long ruid);
 
 }

@@ -73,5 +73,11 @@ public class CandidateServiceImpl implements CandidateService {
             candidateMapper.insert(candidate);
         }
 
+        /**
+         * 更新用户和角色中间表
+         */
+        userDao.insertUserRole(commonId, 2, new Snowflake(0, 1).nextId());
+
+
     }
 }
