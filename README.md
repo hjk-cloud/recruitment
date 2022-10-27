@@ -1,4 +1,5 @@
 # recruitment
+接口文档  https://lnu-recruitment.apifox.cn
 
 ## 功能介绍
 ### 管理员 admin
@@ -22,7 +23,9 @@ candidate：
 
 candidate：
 
-查看浏览记录 Redis：Zset存 candidate_id——（ **position_id/position** , time)
+查看浏览记录 Redis：Zset candidate_id——( **position_id/position** , time)
+
+查看收藏列表 Redis： List candidate_id—— position...
 
 修改个人信息
 
@@ -40,9 +43,11 @@ candidate：根据position_id投递简历，查看投递记录，进度
 
 ### 职位查询
 
-1、Redis存放热门职位信息，展示在首页
+1、根据用户信息进行职位推荐并展示在首页
 
 2、根据条件对职位进行模糊查询 ✔
+
+3、查看每个职位的投递数 Redis： String存 position_id —— num （incr方法自增）
 
 ### 实时聊天
 
