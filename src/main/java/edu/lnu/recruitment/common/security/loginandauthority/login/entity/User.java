@@ -46,7 +46,7 @@ public class User implements UserDetails {
 
     }
 
-    //待研究
+
     //返回权限信息
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

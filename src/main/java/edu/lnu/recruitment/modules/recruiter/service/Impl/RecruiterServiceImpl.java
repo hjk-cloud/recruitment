@@ -75,7 +75,5 @@ public class RecruiterServiceImpl implements RecruiterService {
          */
         userDao.insertUserRole(commonId, 3, new Snowflake(0, 1).nextId());
 
-
-
     }
 }

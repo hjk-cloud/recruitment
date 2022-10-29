@@ -33,4 +33,6 @@ public class CandidateController {
         }
         return R.ok("注册成功");
     }
+
+
 }
