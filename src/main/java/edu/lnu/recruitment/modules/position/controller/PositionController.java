@@ -45,9 +45,15 @@ public class PositionController {
     }
 
     @RequestMapping("/queryById")
-    public R queryById(Long positionId) {
-        Position position = positionService.getById(positionId);
+    public R queryById(@RequestBody Map<String, Object> params) {
+        Position position = positionService.queryById(params);
         return R.ok().put("position", position);
+    }
+
+    @RequestMapping("/queryHistory")
+    public R queryHistory(Long candidateId) {
+        List<Object> list = positionService.queryHistory(candidateId);
+        return R.ok().put("list", list);
     }
 
 }

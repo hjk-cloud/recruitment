@@ -21,4 +21,8 @@ public interface PositionService extends IService<Position> {
     List<Position> queryPage(Map<String, Object> map);
 
     List<Position> queryPageByConditions(Map<String, Object> params);
+
+    Position queryById(Map<String, Object> params);
+
+    List<Object> queryHistory(long candidateId);
 }

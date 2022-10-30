@@ -4,6 +4,7 @@ import cn.hutool.core.lang.Snowflake;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import edu.lnu.recruitment.common.utils.RedisUtil;
 import edu.lnu.recruitment.modules.position.entity.Position;
 import edu.lnu.recruitment.modules.position.mapper.PositionMapper;
 import edu.lnu.recruitment.modules.position.service.PositionService;
@@ -22,11 +23,10 @@ import java.util.Map;
  */
 @Service
 public class PositionServiceImpl extends ServiceImpl<PositionMapper, Position> implements PositionService {
-
-
-
     @Autowired
     private PositionMapper positionMapper;
+    @Autowired
+    private RedisUtil redisUtil;
 
     @Override
     public boolean save(Position position) {
@@ -77,6 +77,24 @@ public class PositionServiceImpl extends ServiceImpl<PositionMapper, Position> i
         positionMapper.selectPage(page, wrapper);
 
         return page.getRecords();
+    }
+
+    @Override
+    public Position queryById(Map<String, Object> params) {
+        String positionId = (String) params.get("positionId");
+        Position position = positionMapper.selectById(positionId);
+        if (params.containsKey("candidateId")) {
+            String candidateId = (String) params.get("candidateId");
+            redisUtil.lSet(candidateId, position);
+        }
+        return position;
+    }
+
+
+    @Override
+    public List<Object> queryHistory(long candidateId) {
+        List<Object> list = redisUtil.lGet(String.valueOf(candidateId), 0, -1);
+        return list;
     }
 
 }
