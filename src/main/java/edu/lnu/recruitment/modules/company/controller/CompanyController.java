@@ -39,6 +39,6 @@ public class CompanyController {
     @RequestMapping("/queryByConditions")
     public R queryByConditions(@RequestBody Map<String, Object> params) {
         List<Company> list = companyService.queryPageByConditions(params);
-        return R.ok().put("当前页", params.get("page")).put("list", list);
+        return R.ok().put("pageNum:", params.get("page")).put("list", list);
     }
 }

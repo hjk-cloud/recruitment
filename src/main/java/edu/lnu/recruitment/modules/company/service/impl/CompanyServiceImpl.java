@@ -38,13 +38,23 @@ public class CompanyServiceImpl implements CompanyService {
 
     @Override
     public List<Company> queryPageByConditions(Map<String, Object> params) {
-        QueryWrapper wrapper = new QueryWrapper();
+        QueryWrapper<Company> wrapper = new QueryWrapper();
 
         int pageNum = (int) params.get("page");
         int size = (int) params.get("size");
 
-        //TODO 增加条件信息
-
+        if (params.containsKey("name")) {
+            String name = (String) params.get("name");
+            wrapper = wrapper.like("company_name", name);
+        }
+        if (params.containsKey("numberScale")) {
+            String numberScale = (String) params.get("numberScale");
+            wrapper = wrapper.like("number_scale", numberScale);
+        }
+        if (params.containsKey("registeredCapital")) {
+            String registeredCapital = (String) params.get("registeredCapital");
+            wrapper = wrapper.like("registered_capital", registeredCapital);
+        }
         Page<Company> page = new Page<>(pageNum, size);
         companyMapper.selectPage(page, wrapper);
         return page.getRecords();
