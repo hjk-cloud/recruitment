@@ -38,7 +38,7 @@ public class FileController {
 
     //定义简历最大大小
     private static final long File_SIZE = 5 * 1024 * 1024L;
-    //定义日期格式
+    //定义日期格式，返回指定时间格式输入
     SimpleDateFormat sdf = new SimpleDateFormat("/yyyy/MM/dd/");
 
 
@@ -48,12 +48,11 @@ public class FileController {
         String originalFilename = file.getOriginalFilename();
         if(!originalFilename.endsWith(".pdf")){
             return R.error("只能上传pdf类型文件");
-        }else if(file.getSize() < File_SIZE){
+        }else if(file.getSize() > File_SIZE){
             return R.error("请上传小于5MB文件");
         }
         String dataformat = sdf.format(new Date());
         String realpath = request.getServletContext().getRealPath("/") + dataformat;
-        System.out.println(realpath);
         File folder = new File("C:\\Users\\lenovo\\Desktop\\简历文件夹");
         if(!folder.exists()){
             folder.mkdirs();
@@ -61,7 +60,7 @@ public class FileController {
         String newName = UUID.randomUUID().toString() + ".pdf";
         try {
             file.transferTo(new File(folder, newName));
-            String url = request.getScheme() + "://" + request.getServletPath() + ":" + request.getServerPort() + dataformat + newName;
+            String url = request.getScheme() + "://" +  request.getServerName() + ":" + request.getServerPort() + dataformat + newName;
             R result = new R();
             result.put("status", "简历成功上传");
             result.put("预览地址", url);
