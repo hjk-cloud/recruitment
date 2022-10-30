@@ -44,4 +44,10 @@ public class PositionController {
         return R.ok().put("pageNum", params.get("page")).put("list", list);
     }
 
+    @RequestMapping("/queryById")
+    public R queryById(Long positionId) {
+        Position position = positionService.getById(positionId);
+        return R.ok().put("position", position);
+    }
+
 }
