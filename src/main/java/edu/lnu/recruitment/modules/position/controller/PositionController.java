@@ -38,10 +38,10 @@ public class PositionController {
         return R.ok().put("list", list);
     }
 
-    @RequestMapping("/queryByConditions")
+    @RequestMapping("/list/queryByConditions")
     public R queryByConditions(@RequestBody Map<String, Object> params) {
         List<Position> list = positionService.queryPageByConditions(params);
-        return R.ok().put("当前页", params.get("page")).put("list", list);
+        return R.ok().put("pageNum", params.get("page")).put("list", list);
     }
 
 }

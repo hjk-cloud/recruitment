@@ -73,11 +73,6 @@ public class PositionServiceImpl extends ServiceImpl<PositionMapper, Position> i
             wrapper = wrapper.le("min_salary", salary).ge("max_salary", salary);
         }
 
-        /*TODO
-           增加各条件的模糊查询
-           变量名称对应相关字段好吧，上边已经改过来了
-        */
-
         Page<Position> page = new Page<>(pageNum, size);
         positionMapper.selectPage(page, wrapper);
 
