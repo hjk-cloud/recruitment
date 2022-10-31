@@ -11,6 +11,7 @@ import edu.lnu.recruitment.modules.position.service.PositionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.io.Serializable;
 import java.util.List;
 import java.util.Map;
 
@@ -93,5 +94,33 @@ public class PositionServiceImpl extends ServiceImpl<PositionMapper, Position> i
         List<Object> list = redisUtil.lGet(String.valueOf(candidateId), 0, -1);
         return list;
     }
+
+    @Override
+    public boolean delete(long positionId) {
+        return positionMapper.deleteById(positionId) > 0;
+    }
+
+    @Override
+    public boolean update(Position position) {
+        return positionMapper.updateById(position) > 0;
+    }
+
+    @Override
+    public List<Position>queryByRecruiterId(Map<String, Object> params) {
+        QueryWrapper<Position> wrapper = new QueryWrapper<>();
+
+        int pageNum = (int) params.get("page");
+        int size = (int) params.get("size");
+        String recruiterId = (String) params.get("recruiterId");
+        Position position = positionMapper.selectById(recruiterId);
+        Page<Position> page = new Page<>(pageNum, size);
+        positionMapper.selectPage(page, wrapper);
+        return page.getRecords();
+    }
+
+//    @Override
+//    public boolean update(Map<String, Object> params) {
+//        return positionMapper.updateById();
+//    }
 
 }

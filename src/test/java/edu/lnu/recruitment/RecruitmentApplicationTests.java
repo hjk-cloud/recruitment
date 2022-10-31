@@ -34,4 +34,5 @@ class RecruitmentApplicationTests {
         Company company = companyMapper.selectById(1581990422140551168L);
         System.out.println(company.toString());
     }
+
 }

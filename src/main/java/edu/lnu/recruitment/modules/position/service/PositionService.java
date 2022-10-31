@@ -3,6 +3,7 @@ package edu.lnu.recruitment.modules.position.service;
 import com.baomidou.mybatisplus.extension.service.IService;
 import edu.lnu.recruitment.modules.position.entity.Position;
 
+import java.io.Serializable;
 import java.util.List;
 import java.util.Map;
 
@@ -25,4 +26,11 @@ public interface PositionService extends IService<Position> {
     Position queryById(Map<String, Object> params);
 
     List<Object> queryHistory(long candidateId);
+
+    boolean delete(long positionId);
+
+    boolean update(Position position);
+
+    List<Position>  queryByRecruiterId(Map<String, Object> params);
+
 }

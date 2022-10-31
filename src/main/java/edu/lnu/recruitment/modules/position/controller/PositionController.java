@@ -1,5 +1,6 @@
 package edu.lnu.recruitment.modules.position.controller;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import edu.lnu.recruitment.common.utils.R;
 import edu.lnu.recruitment.modules.position.entity.Position;
 import edu.lnu.recruitment.modules.position.service.PositionService;
@@ -56,4 +57,21 @@ public class PositionController {
         return R.ok().put("list", list);
     }
 
+    @RequestMapping("/delete")
+    public R delete(String positionId) {
+
+        boolean flag = positionService.delete(Long.valueOf(positionId));
+        return flag? R.ok(): R.error("删除失败");
+    }
+    @RequestMapping("/update")
+    public R update(@RequestBody Position position) {
+
+        boolean flag = positionService.update(position);
+        return flag? R.ok(): R.error("更新失败");
+    }
+    @RequestMapping("/list/queryByRecruiterId")
+    public R queryByRecruiterId(@RequestBody Map<String, Object> params){
+        List<Position> list= positionService.queryByRecruiterId(params);
+       return R.ok().put("list", list);
+    }
 }
