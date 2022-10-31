@@ -32,8 +32,8 @@ public class CompanyController {
     }
 
     @GetMapping("/queryById")
-    public R queryById(Long id) {
-        return R.ok().put("company", companyService.queryById(id));
+    public R queryById(long companyId) {
+        return R.ok().put("company", companyService.queryById(companyId));
     }
 
     @RequestMapping("/queryByConditions")

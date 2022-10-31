@@ -43,8 +43,8 @@ public class CompanyServiceImpl implements CompanyService {
         int pageNum = (int) params.get("page");
         int size = (int) params.get("size");
 
-        if (params.containsKey("name")) {
-            String name = (String) params.get("name");
+        if (params.containsKey("companyName")) {
+            String name = (String) params.get("companyName");
             wrapper = wrapper.like("company_name", name);
         }
         if (params.containsKey("numberScale")) {

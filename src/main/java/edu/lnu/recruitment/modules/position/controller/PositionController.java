@@ -51,7 +51,7 @@ public class PositionController {
     }
 
     @RequestMapping("/queryHistory")
-    public R queryHistory(Long candidateId) {
+    public R queryHistory(long candidateId) {
         List<Object> list = positionService.queryHistory(candidateId);
         return R.ok().put("list", list);
     }
