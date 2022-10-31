@@ -46,7 +46,6 @@ public class PositionServiceImpl extends ServiceImpl<PositionMapper, Position> i
 
     @Override
     public List<Position> queryPageByConditions(Map<String, Object> params) {
-
         QueryWrapper<Position> wrapper = new QueryWrapper<>();
 
         int pageNum = (int) params.get("page");
@@ -61,21 +60,19 @@ public class PositionServiceImpl extends ServiceImpl<PositionMapper, Position> i
         }
         if (params.containsKey("category")) {
             String category = (String) params.get("category");
-            wrapper = wrapper.like("category", category);
+            wrapper = wrapper.likeRight("category", category);
         }
         if (params.containsKey("keyword")) {
             String keyword = (String) params.get("keyword");
-            wrapper = wrapper.like(" keyword", keyword);
+            wrapper = wrapper.likeRight(" keyword", keyword);
         }
         if (params.containsKey("salary")) {
             int salary = (int) params.get("salary");
-            System.out.println(salary);
             wrapper = wrapper.le("min_salary", salary).ge("max_salary", salary);
         }
 
         Page<Position> page = new Page<>(pageNum, size);
         positionMapper.selectPage(page, wrapper);
-
         return page.getRecords();
     }
 
