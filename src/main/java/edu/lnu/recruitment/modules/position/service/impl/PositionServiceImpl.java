@@ -11,7 +11,6 @@ import edu.lnu.recruitment.modules.position.service.PositionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.io.Serializable;
 import java.util.List;
 import java.util.Map;
 
@@ -79,7 +78,7 @@ public class PositionServiceImpl extends ServiceImpl<PositionMapper, Position> i
 
     @Override
     public Position queryById(Map<String, Object> params) {
-        String positionId = (String) params.get("positionId");
+        int positionId = (int) params.get("positionId");
         Position position = positionMapper.selectById(positionId);
         if (params.containsKey("candidateId")) {
             String candidateId = (String) params.get("candidateId");
@@ -111,16 +110,10 @@ public class PositionServiceImpl extends ServiceImpl<PositionMapper, Position> i
 
         int pageNum = (int) params.get("page");
         int size = (int) params.get("size");
-        String recruiterId = (String) params.get("recruiterId");
+        int recruiterId = (int) params.get("recruiterId");
         Position position = positionMapper.selectById(recruiterId);
         Page<Position> page = new Page<>(pageNum, size);
         positionMapper.selectPage(page, wrapper);
         return page.getRecords();
     }
-
-//    @Override
-//    public boolean update(Map<String, Object> params) {
-//        return positionMapper.updateById();
-//    }
-
 }
