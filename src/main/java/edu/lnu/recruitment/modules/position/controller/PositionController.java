@@ -72,6 +72,6 @@ public class PositionController {
     @RequestMapping("/list/queryByRecruiterId")
     public R queryByRecruiterId(@RequestBody Map<String, Object> params){
         List<Position> list= positionService.queryByRecruiterId(params);
-       return R.ok().put("list", list);
+        return R.ok().put("pageNum", params.get("page")).put("list", list);
     }
 }
