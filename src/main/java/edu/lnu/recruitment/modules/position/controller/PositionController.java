@@ -1,6 +1,5 @@
 package edu.lnu.recruitment.modules.position.controller;
 
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import edu.lnu.recruitment.common.utils.R;
 import edu.lnu.recruitment.modules.position.entity.Position;
 import edu.lnu.recruitment.modules.position.service.PositionService;
@@ -42,7 +41,7 @@ public class PositionController {
     @RequestMapping("/list/queryByConditions")
     public R queryByConditions(@RequestBody Map<String, Object> params) {
         List<Position> list = positionService.queryPageByConditions(params);
-        return R.ok().put("pageNum", params.get("page")).put("list", list);
+        return R.ok().put("list", list);
     }
 
     @RequestMapping("/queryById")
