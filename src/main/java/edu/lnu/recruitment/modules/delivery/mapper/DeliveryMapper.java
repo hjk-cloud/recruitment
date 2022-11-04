@@ -2,6 +2,7 @@ package edu.lnu.recruitment.modules.delivery.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import edu.lnu.recruitment.modules.delivery.entity.Delivery;
+import org.apache.ibatis.annotations.Mapper;
 
 /**
  * @Package: edu.lnu.recruitment.modules.delivery.mapper
@@ -10,5 +11,6 @@ import edu.lnu.recruitment.modules.delivery.entity.Delivery;
  * @CreateTime: 2022/11/3 21:28
  * @Description:
  */
+@Mapper
 public interface DeliveryMapper extends BaseMapper<Delivery> {
 }
