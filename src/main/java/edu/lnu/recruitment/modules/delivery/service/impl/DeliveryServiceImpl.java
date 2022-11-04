@@ -41,7 +41,18 @@ public class DeliveryServiceImpl implements DeliveryService {
 
     @Override
     public boolean save(Delivery delivery) {
+        long positionId = delivery.getPositionId();
+        long candidateId = delivery.getCandidateId();
+        if (checkData(positionId, candidateId)) {
+            return false;
+        }
         delivery.setId(new Snowflake(0, 1).nextId());
         return deliveryMapper.insert(delivery) > 0;
+    }
+
+    private boolean checkData(long positionId, long candidateId) {
+        QueryWrapper<Delivery> wrapper = new QueryWrapper<>();
+        wrapper.eq("position_id", positionId).eq("candidate_id", candidateId);
+        return deliveryMapper.selectOne(wrapper) != null;
     }
 }
