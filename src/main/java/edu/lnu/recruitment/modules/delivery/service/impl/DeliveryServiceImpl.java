@@ -2,6 +2,7 @@ package edu.lnu.recruitment.modules.delivery.service.impl;
 
 import cn.hutool.core.lang.Snowflake;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import edu.lnu.recruitment.modules.delivery.entity.Delivery;
 import edu.lnu.recruitment.modules.delivery.mapper.DeliveryMapper;
 import edu.lnu.recruitment.modules.delivery.service.DeliveryService;
@@ -25,18 +26,26 @@ public class DeliveryServiceImpl implements DeliveryService {
 
     @Override
     public List<Delivery> queryByPositionId(Map<String, Object> params) {
+        int pageNum = (int) params.get("page");
+        int size = (int) params.get("size");
         String positionId = (String) params.get("positionId");
         QueryWrapper<Delivery> wrapper = new QueryWrapper<>();
         wrapper.eq("position_id", positionId);
-        return deliveryMapper.selectList(wrapper);
+        Page<Delivery> page = new Page<>(pageNum, size);
+        deliveryMapper.selectPage(page, wrapper);
+        return page.getRecords();
     }
 
     @Override
     public List<Delivery> queryByCandidateId(Map<String, Object> params) {
+        int pageNum = (int) params.get("page");
+        int size = (int) params.get("size");
         String candidateId = (String) params.get("candidateId");
         QueryWrapper<Delivery> wrapper = new QueryWrapper<>();
         wrapper.eq("candidate_id", candidateId);
-        return deliveryMapper.selectList(wrapper);
+        Page<Delivery> page = new Page<>(pageNum, size);
+        deliveryMapper.selectPage(page, wrapper);
+        return page.getRecords();
     }
 
     @Override

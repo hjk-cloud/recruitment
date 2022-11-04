@@ -32,8 +32,8 @@ public class DeliveryController {
         return R.ok().put("list", list);
     }
 
-    @RequestMapping("/record")
-    public R record(@RequestBody Map<String, Object> params) {
+    @RequestMapping("/queryByCandidateId")
+    public R queryByCandidateId(@RequestBody Map<String, Object> params) {
         List<Delivery> list = deliveryService.queryByCandidateId(params);
         return R.ok().put("list", list);
     }
