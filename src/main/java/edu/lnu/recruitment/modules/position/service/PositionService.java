@@ -32,5 +32,4 @@ public interface PositionService extends IService<Position> {
     boolean update(Position position);
 
     List<Position>  queryByRecruiterId(Map<String, Object> params);
-
 }

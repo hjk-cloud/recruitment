@@ -108,11 +108,10 @@ public class PositionServiceImpl extends ServiceImpl<PositionMapper, Position> i
     @Override
     public List<Position>queryByRecruiterId(Map<String, Object> params) {
         QueryWrapper<Position> wrapper = new QueryWrapper<>();
-
         int pageNum = (int) params.get("page");
         int size = (int) params.get("size");
         String recruiterId = (String) params.get("recruiterId");
-        Position position = positionMapper.selectById(recruiterId);
+        wrapper=wrapper.eq("recruiter_id",recruiterId);
         Page<Position> page = new Page<>(pageNum, size);
         positionMapper.selectPage(page, wrapper);
         return page.getRecords();
