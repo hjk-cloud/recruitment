@@ -1,8 +1,10 @@
 package edu.lnu.recruitment.modules.delivery.controller;
 
 import edu.lnu.recruitment.common.utils.R;
+import edu.lnu.recruitment.modules.candidate.entity.Candidate;
 import edu.lnu.recruitment.modules.delivery.entity.Delivery;
 import edu.lnu.recruitment.modules.delivery.service.DeliveryService;
+import edu.lnu.recruitment.modules.position.entity.Position;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -28,13 +30,13 @@ public class DeliveryController {
 
     @RequestMapping("/queryByPositionId")
     public R queryByPositionId(@RequestBody Map<String, Object> params) {
-        List<Delivery> list = deliveryService.queryByPositionId(params);
+        List<Candidate> list = deliveryService.queryByPositionId(params);
         return R.ok().put("list", list);
     }
 
     @RequestMapping("/queryByCandidateId")
     public R queryByCandidateId(@RequestBody Map<String, Object> params) {
-        List<Delivery> list = deliveryService.queryByCandidateId(params);
+        List<Position> list = deliveryService.queryByCandidateId(params);
         return R.ok().put("list", list);
     }
 

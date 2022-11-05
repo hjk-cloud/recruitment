@@ -16,4 +16,6 @@ import java.util.List;
 @Mapper
 public interface DeliveryMapper extends BaseMapper<Delivery> {
     List<Long> selectCandidateIdByPositionIdLong(Long positionId);
+
+    List<Long> selectPositionIdByCandidateIdLong(Long candidateId);
 }
