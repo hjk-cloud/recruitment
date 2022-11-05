@@ -3,6 +3,7 @@ package edu.lnu.recruitment;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import edu.lnu.recruitment.modules.company.entity.Company;
 import edu.lnu.recruitment.modules.company.mapper.CompanyMapper;
+import edu.lnu.recruitment.modules.delivery.mapper.DeliveryMapper;
 import edu.lnu.recruitment.modules.position.entity.Position;
 import edu.lnu.recruitment.modules.position.mapper.PositionMapper;
 import org.junit.jupiter.api.Test;
@@ -19,6 +20,8 @@ class RecruitmentApplicationTests {
 
     @Autowired
     private CompanyMapper companyMapper;
+    @Autowired
+    private DeliveryMapper deliveryMapper;
 
     @Test
     void contextLoads() {
@@ -34,5 +37,9 @@ class RecruitmentApplicationTests {
         Company company = companyMapper.selectById(1581990422140551168L);
         System.out.println(company.toString());
     }
-
+    @Test
+    void deliveryTest() {
+        List<Long> list = deliveryMapper.selectCandidateIdByPositionIdLong(43L);
+        System.out.println(list);
+    }
 }

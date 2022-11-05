@@ -4,6 +4,8 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import edu.lnu.recruitment.modules.delivery.entity.Delivery;
 import org.apache.ibatis.annotations.Mapper;
 
+import java.util.List;
+
 /**
  * @Package: edu.lnu.recruitment.modules.delivery.mapper
  * @ClassName: DeliveryMapper
@@ -13,4 +15,5 @@ import org.apache.ibatis.annotations.Mapper;
  */
 @Mapper
 public interface DeliveryMapper extends BaseMapper<Delivery> {
+    List<Long> selectCandidateIdByPositionIdLong(Long positionId);
 }
