@@ -11,7 +11,6 @@ import edu.lnu.recruitment.modules.position.service.PositionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.io.Serializable;
 import java.util.List;
 import java.util.Map;
 
@@ -83,6 +82,7 @@ public class PositionServiceImpl extends ServiceImpl<PositionMapper, Position> i
         Position position = positionMapper.selectById(positionId);
         if (params.containsKey("candidateId")) {
             String candidateId = (String) params.get("candidateId");
+            //TODO list需避免存放重复值
             redisUtil.lSet(candidateId, position);
         }
         return position;
