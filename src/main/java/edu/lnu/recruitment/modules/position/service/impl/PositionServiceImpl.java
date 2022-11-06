@@ -82,7 +82,7 @@ public class PositionServiceImpl extends ServiceImpl<PositionMapper, Position> i
         Position position = positionMapper.selectById(positionId);
         if (params.containsKey("candidateId")) {
             String candidateId = (String) params.get("candidateId");
-            //TODO list需避免存放重复值
+            redisUtil.lRemove(candidateId, 0, position);
             redisUtil.lSet(candidateId, position);
         }
         return position;
