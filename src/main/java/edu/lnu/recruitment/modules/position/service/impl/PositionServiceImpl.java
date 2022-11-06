@@ -52,23 +52,23 @@ public class PositionServiceImpl extends ServiceImpl<PositionMapper, Position> i
         int size = (int) params.get("size");
         if (params.containsKey("name")) {
             String name = (String) params.get("name");
-            wrapper = wrapper.like("position_name", name);
+            wrapper.like("position_name", name);
         }
         if (params.containsKey("address")) {
             String address = (String) params.get("address");
-            wrapper = wrapper.like("address", address);
+            wrapper.like("address", address);
         }
         if (params.containsKey("category")) {
             String category = (String) params.get("category");
-            wrapper = wrapper.likeRight("category", category);
+            wrapper.likeRight("category", category);
         }
         if (params.containsKey("keyword")) {
             String keyword = (String) params.get("keyword");
-            wrapper = wrapper.likeRight(" keyword", keyword);
+            wrapper.likeRight(" keyword", keyword);
         }
         if (params.containsKey("salary")) {
             int salary = (int) params.get("salary");
-            wrapper = wrapper.le("min_salary", salary).ge("max_salary", salary);
+            wrapper.le("min_salary", salary).ge("max_salary", salary);
         }
 
         Page<Position> page = new Page<>(pageNum, size);
@@ -82,16 +82,15 @@ public class PositionServiceImpl extends ServiceImpl<PositionMapper, Position> i
         Position position = positionMapper.selectById(positionId);
         if (params.containsKey("candidateId")) {
             String candidateId = (String) params.get("candidateId");
-            redisUtil.lRemove(candidateId, 0, position);
-            redisUtil.lSet(candidateId, position);
+            redisUtil.lRemove("history_" + candidateId, 0, position);
+            redisUtil.lSet("history_" + candidateId, position);
         }
         return position;
     }
 
-
     @Override
     public List<Object> queryHistory(long candidateId) {
-        List<Object> list = redisUtil.lGet(String.valueOf(candidateId), 0, -1);
+        List<Object> list = redisUtil.lGet("history_" + candidateId, 0, -1);
         return list;
     }
 
@@ -116,10 +115,4 @@ public class PositionServiceImpl extends ServiceImpl<PositionMapper, Position> i
         positionMapper.selectPage(page, wrapper);
         return page.getRecords();
     }
-
-//    @Override
-//    public boolean update(Map<String, Object> params) {
-//        return positionMapper.updateById();
-//    }
-
 }
