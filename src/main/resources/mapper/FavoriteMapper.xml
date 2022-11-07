@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="edu.lnu.recruitment.modules.favorite.mapper.FavoriteMapper">
+    <delete id="deleteByCandidateIdPositionId">
+        delete from t_favorite
+        where candidate_id = #{candidateId} and position_id = #{positionId}
+    </delete>
+
+    <select id="allFavoriteOfCandidateId" resultType="edu.lnu.recruitment.modules.position.entity.Position">
+        select t_position.*
+        from t_favorite right join t_position on t_favorite.position_id=t_position.id
+        where candidate_id=#{candidateId}
+    </select>
+    <select id="existPositionId" resultType="java.lang.Integer">
+        select count(*)
+        from t_favorite
+        where candidate_id = #{candidateId} and position_id = #{positionId}
+    </select>
+</mapper>
