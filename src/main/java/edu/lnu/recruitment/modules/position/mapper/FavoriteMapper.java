@@ -1,13 +1,12 @@
-package edu.lnu.recruitment.modules.favorite.mapper;
+package edu.lnu.recruitment.modules.position.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import edu.lnu.recruitment.modules.favorite.entity.Favorite;
+import edu.lnu.recruitment.modules.position.entity.Favorite;
 import edu.lnu.recruitment.modules.position.entity.Position;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
-import java.util.Map;
 
 @Mapper
 public interface FavoriteMapper extends BaseMapper<Favorite> {

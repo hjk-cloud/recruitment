@@ -1,4 +1,4 @@
-package edu.lnu.recruitment.modules.favorite.entity;
+package edu.lnu.recruitment.modules.position.entity;
 
 import com.baomidou.mybatisplus.annotation.FieldFill;
 import com.baomidou.mybatisplus.annotation.TableField;
