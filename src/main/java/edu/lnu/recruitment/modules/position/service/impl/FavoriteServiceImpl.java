@@ -3,14 +3,13 @@ package edu.lnu.recruitment.modules.position.service.impl;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import edu.lnu.recruitment.common.utils.RedisUtil;
 import edu.lnu.recruitment.modules.position.entity.Favorite;
-import edu.lnu.recruitment.modules.position.mapper.FavoriteMapper;
-import edu.lnu.recruitment.modules.position.service.FavoriteService;
 import edu.lnu.recruitment.modules.position.entity.Position;
+import edu.lnu.recruitment.modules.position.mapper.FavoriteMapper;
 import edu.lnu.recruitment.modules.position.mapper.PositionMapper;
+import edu.lnu.recruitment.modules.position.service.FavoriteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,6 +25,7 @@ public class FavoriteServiceImpl extends ServiceImpl<FavoriteMapper, Favorite> i
     @Override
     public boolean save(Favorite favorite) {
         // cid favorite_123 [1, 2, 5]
+        System.out.println(favorite.getCandidateId() + "   " + favorite.getPositionId());
         redisUtil.lSet("favorite_" + favorite.getCandidateId(), favorite.getPositionId());
         return true;
     }
@@ -34,22 +34,22 @@ public class FavoriteServiceImpl extends ServiceImpl<FavoriteMapper, Favorite> i
         List<Object> list = redisUtil.lGet("favorite_" + candidateId, 0, -1);
         List<Position> positionList = new ArrayList<>();
         for(Object id: list) {
-            positionList.add(positionMapper.selectById((Serializable) id));
+            String idStr = String.valueOf(id);
+            positionList.add(positionMapper.selectById(idStr));
         }
         return positionList;
     }
 
     @Override
     public boolean deleteByCandidateIdPositionId(String candidateId, String positionId) {
-        redisUtil.lRemove("favorite_" + candidateId, 0L, positionId);
-        return true;
+        return redisUtil.lRemove("favorite_" + candidateId, 0, Long.valueOf(positionId)) > 0;
     }
 
     @Override
     public int existPositionId(Favorite favorite) {
-        Long candidateId = Long.valueOf(favorite.getCandidateId());
-        Long positionId= Long.valueOf(favorite.getPositionId());
+        Long candidateId = favorite.getCandidateId();
+        Long positionId = favorite.getPositionId();
         List<Object> list = redisUtil.lGet("favorite_" + candidateId, 0, -1);
-        return list.contains(positionId)? 1: 0;
+        return list.contains(positionId) ? 1 : 0;
     }
 }

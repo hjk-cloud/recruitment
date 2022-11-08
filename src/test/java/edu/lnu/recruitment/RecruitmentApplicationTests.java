@@ -4,10 +4,8 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import edu.lnu.recruitment.modules.company.entity.Company;
 import edu.lnu.recruitment.modules.company.mapper.CompanyMapper;
 import edu.lnu.recruitment.modules.delivery.mapper.DeliveryMapper;
-import edu.lnu.recruitment.modules.position.mapper.FavoriteMapper;
 import edu.lnu.recruitment.modules.position.entity.Position;
 import edu.lnu.recruitment.modules.position.mapper.PositionMapper;
-import edu.lnu.recruitment.modules.position.service.FavoriteService;
 import edu.lnu.recruitment.modules.position.service.impl.FavoriteServiceImpl;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,8 +48,8 @@ class RecruitmentApplicationTests {
 
     @Test
     void deleteByCandidateIdPositionIdTest() {
-        boolean li = favoriteService.deleteByCandidateIdPositionId("123", "2");
-        System.out.println(li);
+        boolean li = favoriteService.deleteByCandidateIdPositionId("1584904144370663424",
+                "1582262480850255872");
     }
 
 }
