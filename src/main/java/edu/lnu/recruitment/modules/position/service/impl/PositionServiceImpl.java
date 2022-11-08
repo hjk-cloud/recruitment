@@ -79,7 +79,11 @@ public class PositionServiceImpl extends ServiceImpl<PositionMapper, Position> i
     @Override
     public Position queryById(Map<String, Object> params) {
         String positionId = (String) params.get("positionId");
-        Position position = positionMapper.selectById(positionId);
+        Position position = (Position) redisUtil.get("position_" + positionId);
+        if (position == null) {
+            position = positionMapper.selectById(positionId);
+            redisUtil.set("position_" + positionId, position, 60);
+        }
         if (params.containsKey("candidateId")) {
             String candidateId = (String) params.get("candidateId");
             redisUtil.lRemove("history_" + candidateId, 0, position);

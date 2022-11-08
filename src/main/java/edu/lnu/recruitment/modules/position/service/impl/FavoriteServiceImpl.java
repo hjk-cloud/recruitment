@@ -16,16 +16,12 @@ import java.util.List;
 @Service
 public class FavoriteServiceImpl extends ServiceImpl<FavoriteMapper, Favorite> implements FavoriteService {
     @Autowired
-    private FavoriteMapper favoriteMapper;
-    @Autowired
     private PositionMapper positionMapper;
     @Autowired
     private RedisUtil redisUtil;
 
     @Override
     public boolean save(Favorite favorite) {
-        // cid favorite_123 [1, 2, 5]
-        System.out.println(favorite.getCandidateId() + "   " + favorite.getPositionId());
         redisUtil.lSet("favorite_" + favorite.getCandidateId(), favorite.getPositionId());
         return true;
     }
@@ -35,7 +31,11 @@ public class FavoriteServiceImpl extends ServiceImpl<FavoriteMapper, Favorite> i
         List<Position> positionList = new ArrayList<>();
         for(Object id: list) {
             String idStr = String.valueOf(id);
-            positionList.add(positionMapper.selectById(idStr));
+            Position position = (Position) redisUtil.get("position_" + idStr);
+            if (position == null) {
+                position = positionMapper.selectById(idStr);
+            }
+            positionList.add(position);
         }
         return positionList;
     }
