@@ -69,6 +69,11 @@ public class DeliveryServiceImpl implements DeliveryService {
         return deliveryMapper.insert(delivery) > 0;
     }
 
+    @Override
+    public boolean updateState(Long id, Integer deliveryStatus) {
+        return deliveryMapper.updateState(id, deliveryStatus);
+    }
+
     private boolean checkData(long positionId, long candidateId) {
         QueryWrapper<Delivery> wrapper = new QueryWrapper<>();
         wrapper.eq("position_id", positionId).eq("candidate_id", candidateId);

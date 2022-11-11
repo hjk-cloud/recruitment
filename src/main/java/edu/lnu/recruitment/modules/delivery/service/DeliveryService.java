@@ -20,4 +20,6 @@ public interface DeliveryService {
     List<Position> queryByCandidateId(Map<String, Object> params);
 
     boolean save(Delivery delivery);
+
+    boolean updateState(Long id, Integer deliveryStatus);
 }
