@@ -46,7 +46,8 @@ public class DeliveryController {
         return flag ? R.ok() : R.error("投递失败");
     }
 
-    public R updateState(Long id, Integer deliveryStatus) {
-        return R.ok(deliveryService.updateState(id, deliveryStatus)? "更新成功": "更新失败");
+    @RequestMapping("/updateStatus")
+    public R updateStatus(@RequestBody Delivery delivery) {
+        return R.ok(deliveryService.updateStatus(delivery) ? "更新成功" : "更新失败");
     }
 }

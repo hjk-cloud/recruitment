@@ -21,5 +21,5 @@ public interface DeliveryService {
 
     boolean save(Delivery delivery);
 
-    boolean updateState(Long id, Integer deliveryStatus);
+    boolean updateStatus(Delivery delivery);
 }

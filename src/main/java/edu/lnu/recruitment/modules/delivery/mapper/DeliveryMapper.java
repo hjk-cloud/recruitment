@@ -19,5 +19,5 @@ public interface DeliveryMapper extends BaseMapper<Delivery> {
 
     List<Long> selectPositionIdByCandidateIdLong(Long candidateId);
 
-    boolean updateState(Long id, Integer deliveryStatus);
+    boolean updateStatus(Long id, Integer deliveryStatus);
 }

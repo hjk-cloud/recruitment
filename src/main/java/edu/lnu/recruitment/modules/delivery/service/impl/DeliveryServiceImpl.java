@@ -70,8 +70,10 @@ public class DeliveryServiceImpl implements DeliveryService {
     }
 
     @Override
-    public boolean updateState(Long id, Integer deliveryStatus) {
-        return deliveryMapper.updateState(id, deliveryStatus);
+    public boolean updateStatus(Delivery delivery) {
+        long id = delivery.getId();
+        int deliveryStatus = delivery.getDeliveryStatus();
+        return deliveryMapper.updateStatus(id, deliveryStatus);
     }
 
     private boolean checkData(long positionId, long candidateId) {
