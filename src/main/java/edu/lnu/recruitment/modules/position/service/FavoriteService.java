@@ -3,7 +3,6 @@ package edu.lnu.recruitment.modules.position.service;
 import com.baomidou.mybatisplus.extension.service.IService;
 import edu.lnu.recruitment.modules.position.entity.Favorite;
 import edu.lnu.recruitment.modules.position.entity.Position;
-import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 

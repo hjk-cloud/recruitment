@@ -3,7 +3,6 @@ package edu.lnu.recruitment.modules.position.service;
 import com.baomidou.mybatisplus.extension.service.IService;
 import edu.lnu.recruitment.modules.position.entity.Position;
 
-import java.io.Serializable;
 import java.util.List;
 import java.util.Map;
 

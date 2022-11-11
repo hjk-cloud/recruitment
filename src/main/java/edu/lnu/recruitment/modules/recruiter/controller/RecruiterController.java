@@ -1,7 +1,6 @@
 package edu.lnu.recruitment.modules.recruiter.controller;
 
 import edu.lnu.recruitment.common.utils.R;
-import edu.lnu.recruitment.modules.candidate.entity.Candidate;
 import edu.lnu.recruitment.modules.recruiter.entity.Recruiter;
 import edu.lnu.recruitment.modules.recruiter.service.RecruiterService;
 import org.springframework.beans.factory.annotation.Autowired;

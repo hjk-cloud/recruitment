@@ -2,12 +2,11 @@ package edu.lnu.recruitment.modules.position.controller;
 
 import edu.lnu.recruitment.common.utils.R;
 import edu.lnu.recruitment.modules.position.entity.Favorite;
-import edu.lnu.recruitment.modules.position.service.FavoriteService;
 import edu.lnu.recruitment.modules.position.entity.Position;
+import edu.lnu.recruitment.modules.position.service.FavoriteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 @RestController

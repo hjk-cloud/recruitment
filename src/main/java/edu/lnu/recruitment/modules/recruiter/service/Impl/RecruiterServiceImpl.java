@@ -4,7 +4,6 @@ import cn.hutool.core.lang.Snowflake;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import edu.lnu.recruitment.common.security.loginandauthority.login.entity.User;
 import edu.lnu.recruitment.common.security.loginandauthority.login.mapper.UserDao;
-import edu.lnu.recruitment.modules.candidate.entity.Candidate;
 import edu.lnu.recruitment.modules.recruiter.entity.Recruiter;
 import edu.lnu.recruitment.modules.recruiter.mapper.RecruiterMapper;
 import edu.lnu.recruitment.modules.recruiter.service.RecruiterService;

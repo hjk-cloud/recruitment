@@ -8,11 +8,9 @@ import edu.lnu.recruitment.modules.position.mapper.FavoriteMapper;
 import edu.lnu.recruitment.modules.position.mapper.PositionMapper;
 import edu.lnu.recruitment.modules.position.service.FavoriteService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 @Service
@@ -55,12 +53,9 @@ public class FavoriteServiceImpl extends ServiceImpl<FavoriteMapper, Favorite> i
         return list.contains(positionId) ? 1 : 0;
     }
 
-    @Scheduled(cron = "5 * * * * *")
-    protected void saveToDatabase() {
-        System.out.println(new Date());
-        /*TODO 将Redis中的收藏数据写入MySQL表中
-         *   1.操作Redis，根据用户id获取职位列表
-         *   2.调用favoriteMapper方法，将用户id与每个职位id写入数据库
-         * */
-    }
+    //定时任务，未使用
+//    @Scheduled(cron = "5 * * * * *")
+//    protected void saveToDatabase() {
+//        System.out.println(new Date());
+//    }
 }
