@@ -8,6 +8,5 @@ import org.springframework.stereotype.Repository;
 @Mapper
 @Repository
 public interface RecruiterMapper extends BaseMapper<Recruiter> {
-    Byte getCompanyStatusByCompanyId(Long companyId);
 
 }
