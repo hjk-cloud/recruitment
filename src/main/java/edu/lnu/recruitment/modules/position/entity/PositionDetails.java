@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
  * @ClassName: PositionDetails
  * @Author: huangjk
  * @CreateTime: 2022/11/6 21:00
- * @Description: 通过Redis获取职位附加信息，包含用户对职位的收藏状态、职位浏览量等
+ * @Description: 通过Redis获取职位附加信息，包含用户对职位的收藏状态、投递状态、职位浏览量等
  */
 @AllArgsConstructor
 @NoArgsConstructor
@@ -17,5 +17,6 @@ import lombok.NoArgsConstructor;
 public class PositionDetails {
     private Position position;
     private boolean isFavorite;
+    private boolean isDelivery;
     private int viewCount;
 }

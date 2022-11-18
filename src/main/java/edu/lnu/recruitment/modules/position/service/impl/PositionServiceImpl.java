@@ -76,6 +76,12 @@ public class PositionServiceImpl extends ServiceImpl<PositionMapper, Position> i
         return page.getRecords();
     }
 
+    /**
+     * 查询职位详情
+     * 1.在redis中查找缓存。若不存在，向MySQL查询，将查询结果写入缓存
+     * 2.对于已登录的用户（请求参数中存在candidateId），将职位信息写入Redis，以实现浏览记录
+     * 3.职位点击量+1，写入Redis，以实现职位点击量统计
+     */
     @Override
     public Position queryById(Map<String, Object> params) {
         String positionId = (String) params.get("positionId");
@@ -89,6 +95,7 @@ public class PositionServiceImpl extends ServiceImpl<PositionMapper, Position> i
             redisUtil.lRemove("history_" + candidateId, 0, position);
             redisUtil.lSet("history_" + candidateId, position);
         }
+        redisUtil.incr("position_count_" + positionId, 1);
         return position;
     }
 
@@ -100,21 +107,32 @@ public class PositionServiceImpl extends ServiceImpl<PositionMapper, Position> i
 
     @Override
     public boolean delete(long positionId) {
-        return positionMapper.deleteById(positionId) > 0;
+        boolean isSuccess = positionMapper.deleteById(positionId) > 0;
+        if (!isSuccess) {
+            return false;
+        }
+        redisUtil.del("position_count_" + positionId);
+        redisUtil.del("position_" + positionId);
+        return true;
     }
 
     @Override
     public boolean update(Position position) {
-        return positionMapper.updateById(position) > 0;
+        boolean isSuccess = positionMapper.updateById(position) > 0;
+        if (!isSuccess) {
+            return false;
+        }
+        redisUtil.del("position_" + position.getId());
+        return true;
     }
 
     @Override
-    public List<Position>queryByRecruiterId(Map<String, Object> params) {
+    public List<Position> queryByRecruiterId(Map<String, Object> params) {
         QueryWrapper<Position> wrapper = new QueryWrapper<>();
         int pageNum = (int) params.get("page");
         int size = (int) params.get("size");
         String recruiterId = (String) params.get("recruiterId");
-        wrapper=wrapper.eq("recruiter_id",recruiterId);
+        wrapper = wrapper.eq("recruiter_id", recruiterId);
         Page<Position> page = new Page<>(pageNum, size);
         positionMapper.selectPage(page, wrapper);
         return page.getRecords();
