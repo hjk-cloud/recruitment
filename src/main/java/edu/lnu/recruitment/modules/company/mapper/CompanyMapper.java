@@ -18,4 +18,6 @@ public interface CompanyMapper extends BaseMapper<Company> {
     boolean updateStatus(Long id, byte status);
 
     List<Company> queryAllUnchecked();
+
+    Byte getCompanyStatusByRecruiterId(Long companyId);
 }

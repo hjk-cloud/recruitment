@@ -8,8 +8,15 @@
         where id = #{id}
     </update>
     <select id="queryAllUnchecked" resultType="edu.lnu.recruitment.modules.company.entity.Company">
-        select*
+        select *
         from t_company
         where status = 0
+    </select>
+
+    <select id="getCompanyStatusByRecruiterId" resultType="java.lang.Byte">
+        select t1.status
+        from t_company as t1, t_recruiter as t2
+        where t1.id = t2.company_id
+        and t2.id = #{recruiterId}
     </select>
 </mapper>

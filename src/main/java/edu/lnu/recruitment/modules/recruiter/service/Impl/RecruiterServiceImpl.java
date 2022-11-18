@@ -63,7 +63,7 @@ public class RecruiterServiceImpl implements RecruiterService {
             throw new RuntimeException("该用户名已存在");
         }else{
             //对用户id采用雪花算法
-            recruiter.setRecruiterId(commonId);
+            recruiter.setId(commonId);
             //ToDo 处理用户简历
             //未注册的用户才可以注册
             recruiterMapper.insert(recruiter);
@@ -76,11 +76,5 @@ public class RecruiterServiceImpl implements RecruiterService {
 
     }
 
-    @Override
-    public Byte getStatus(Long id) {
-        Recruiter recruiter = recruiterMapper.selectById(id);
-        Byte status = recruiterMapper.getCompanyStatusByCompanyId(recruiter.getCompanyId());
 
-        return status;
-    }
 }

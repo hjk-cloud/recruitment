@@ -41,4 +41,5 @@ public class RecruiterController {
         return R.ok().put("status",status);
     }
 
+
 }

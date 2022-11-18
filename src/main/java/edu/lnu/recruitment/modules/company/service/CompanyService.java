@@ -20,4 +20,8 @@ public interface CompanyService {
     List<Company> queryPageByConditions(Map<String, Object> params);
 
     boolean check(Company company);
+
+    List<Company> queryAllUnchecked(int page, int size);
+
+    Byte getStatus(String recruiterId);
 }

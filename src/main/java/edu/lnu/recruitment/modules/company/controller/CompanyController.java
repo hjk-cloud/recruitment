@@ -55,4 +55,23 @@ public class CompanyController {
         companyService.check(company);
         return R.ok("审批完成");
     }
+
+    /**
+     * 管理员查看全部未审核信息
+     */
+    @GetMapping("/admin/showAll")
+    public R show(int page, int size){
+
+        List<Company> company = companyService.queryAllUnchecked(page, size);
+        return R.ok().put("company", company);
+    }
+
+    /**
+     * 显示审核状态
+     */
+    @RequestMapping("/recruiter/showStatus")
+    public R showStatus(String recruiterId){
+        Byte status = companyService.getStatus(recruiterId);
+        return R.ok().put("status", status);
+    }
 }

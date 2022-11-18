@@ -3,9 +3,5 @@
 <mapper namespace="edu.lnu.recruitment.modules.recruiter.mapper.RecruiterMapper">
 
 
-    <select id="getCompanyStatusByCompanyId" resultType="java.lang.Byte">
-        select status
-        from t_company
-        where t_recruiter.company_id=t_company.id
-    </select>
+
 </mapper>

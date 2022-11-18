@@ -67,4 +67,19 @@ public class CompanyServiceImpl implements CompanyService {
         companyMapper.updateStatus(id, status);
         return false;
     }
+
+    @Override
+    public List<Company> queryAllUnchecked(int page, int size) {
+        QueryWrapper<Company> wrapper = new QueryWrapper<>();
+        wrapper.eq("status", 0);
+        Page<Company> pages = new Page<>(page, size);
+        companyMapper.selectPage(pages, wrapper);
+        return pages.getRecords();
+    }
+
+    @Override
+    public Byte getStatus(String recruiterId) {
+        Byte status = companyMapper.getCompanyStatusByRecruiterId(Long.valueOf(recruiterId));
+        return status;
+    }
 }
