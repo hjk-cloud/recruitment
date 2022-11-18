@@ -2,4 +2,14 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="edu.lnu.recruitment.modules.company.mapper.CompanyMapper">
 
+    <update id="updateStatus">
+        update t_company
+        set delivery_status = 1
+        where id = #{id}
+    </update>
+    <select id="queryAllUnchecked" resultType="edu.lnu.recruitment.modules.company.entity.Company">
+        select*
+        from t_company
+        where status = 0
+    </select>
 </mapper>

@@ -18,4 +18,6 @@ public interface CompanyService {
     Company queryById(long id);
 
     List<Company> queryPageByConditions(Map<String, Object> params);
+
+    boolean check(Company company);
 }

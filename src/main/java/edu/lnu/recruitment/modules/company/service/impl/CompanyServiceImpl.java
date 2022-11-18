@@ -59,4 +59,12 @@ public class CompanyServiceImpl implements CompanyService {
         companyMapper.selectPage(page, wrapper);
         return page.getRecords();
     }
+
+    @Override
+    public boolean check(Company company) {
+        long id = company.getId();
+        Byte status = company.getStatus();
+        companyMapper.updateStatus(id, status);
+        return false;
+    }
 }

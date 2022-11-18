@@ -48,6 +48,7 @@ public class DeliveryController {
 
     @RequestMapping("/updateStatus")
     public R updateStatus(@RequestBody Delivery delivery) {
-        return R.ok(deliveryService.updateStatus(delivery) ? "更新成功" : "更新失败");
+            return R.ok(deliveryService.updateStatus(delivery) ? "更新成功" : "更新失败");
+
     }
 }

@@ -32,5 +32,13 @@ public class RecruiterController {
         }
         return R.ok("注册成功");
     }
+    /**
+     * 显示审核状态
+     */
+    @RequestMapping("/showStatus")
+    public R showStatus(@RequestBody String id){
+        Byte status = recruiterService.getStatus(Long.valueOf(id));
+        return R.ok().put("status",status);
+    }
 
 }

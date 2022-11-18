@@ -75,4 +75,12 @@ public class RecruiterServiceImpl implements RecruiterService {
         userDao.insertUserRole(commonId, 3, new Snowflake(0, 1).nextId());
 
     }
+
+    @Override
+    public Byte getStatus(Long id) {
+        Recruiter recruiter = recruiterMapper.selectById(id);
+        Byte status = recruiterMapper.getCompanyStatusByCompanyId(recruiter.getCompanyId());
+
+        return status;
+    }
 }

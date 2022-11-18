@@ -4,10 +4,7 @@ import edu.lnu.recruitment.common.utils.R;
 import edu.lnu.recruitment.modules.company.entity.Company;
 import edu.lnu.recruitment.modules.company.service.CompanyService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Map;
@@ -40,5 +37,22 @@ public class CompanyController {
     public R queryByConditions(@RequestBody Map<String, Object> params) {
         List<Company> list = companyService.queryPageByConditions(params);
         return R.ok().put("pageNum:", params.get("page")).put("list", list);
+    }
+    /**
+     * 展示公司注册信息
+     */
+    @GetMapping("/show/{id}")
+    public R show(@RequestBody Long id){
+
+        Company company = companyService.queryById(id);
+        return R.ok().put("company", company);
+    }
+    /**
+     * 审批公司信息
+     */
+    @PostMapping("/check")
+    public R check(@RequestBody Company company){
+        companyService.check(company);
+        return R.ok("审批完成");
     }
 }

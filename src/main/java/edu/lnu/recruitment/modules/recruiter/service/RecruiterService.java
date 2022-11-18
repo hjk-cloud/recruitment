@@ -6,4 +6,6 @@ public interface RecruiterService {
 
     void register(Recruiter recruiter);
 
+    Byte getStatus(Long id);
+
 }

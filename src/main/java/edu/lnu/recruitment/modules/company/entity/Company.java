@@ -44,6 +44,8 @@ public class Company {
 
     private String registeredCapital;
 
+    private Byte status;
+
     @TableField(fill = FieldFill.INSERT)
     private Date createTime;
 
