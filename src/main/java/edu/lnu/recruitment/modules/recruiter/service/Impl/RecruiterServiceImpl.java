@@ -76,5 +76,4 @@ public class RecruiterServiceImpl implements RecruiterService {
 
     }
 
-
 }
