@@ -4,13 +4,13 @@
 
     <update id="updateStatus">
         update t_company
-        set status = #{status}
+        set verification = #{verification}
         where id = #{id}
     </update>
     <select id="queryAllUnchecked" resultType="edu.lnu.recruitment.modules.company.entity.Company">
         select *
         from t_company
-        where status = 0
+        where verification = 0
     </select>
 
     <select id="getCompanyStatusByRecruiterId" resultType="java.lang.Byte">

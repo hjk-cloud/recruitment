@@ -4,7 +4,10 @@ import edu.lnu.recruitment.common.utils.R;
 import edu.lnu.recruitment.modules.company.entity.Company;
 import edu.lnu.recruitment.modules.company.service.CompanyService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 import java.util.Map;
@@ -42,18 +45,19 @@ public class CompanyController {
      * 展示公司注册信息
      */
     @GetMapping("/show/{id}")
-    public R show(@RequestBody Long id){
+    public R show(@RequestBody Long id) {
 
         Company company = companyService.queryById(id);
         return R.ok().put("company", company);
     }
+
     /**
      * 审批公司信息
      */
     @GetMapping("/check")
-    public R check( Long id,Byte status){
-        boolean isSuccess =companyService.check(id,status);
-        return R.ok("审批完成"+isSuccess);
+    public R check(Long id, Byte verification) {
+        boolean isSuccess = companyService.check(id, verification);
+        return R.ok("审批完成" + isSuccess);
     }
 
     /**

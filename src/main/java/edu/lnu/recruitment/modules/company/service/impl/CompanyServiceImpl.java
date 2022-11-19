@@ -62,11 +62,8 @@ public class CompanyServiceImpl implements CompanyService {
 
     @Override
     public boolean check(Long id,Byte status) {
-        boolean isSuccess=companyMapper.updateStatus(id, status);
-        if (!isSuccess) {
-            return false;
-        }
-        return true;
+        boolean isSuccess = companyMapper.updateStatus(id, status);
+        return isSuccess;
     }
 
     @Override

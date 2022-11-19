@@ -4,8 +4,6 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import edu.lnu.recruitment.modules.company.entity.Company;
 import org.apache.ibatis.annotations.Mapper;
 
-import java.util.List;
-
 /**
  * @Package: edu.lnu.recruitment.modules.company.mapper
  * @ClassName: CompanyMapper
@@ -15,9 +13,7 @@ import java.util.List;
  */
 @Mapper
 public interface CompanyMapper extends BaseMapper<Company> {
-    boolean updateStatus(Long id, byte status);
-
-    List<Company> queryAllUnchecked();
+    boolean updateStatus(Long id, byte verification);
 
     Byte getCompanyStatusByRecruiterId(Long companyId);
 }
