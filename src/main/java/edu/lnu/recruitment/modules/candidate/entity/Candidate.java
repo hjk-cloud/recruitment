@@ -20,6 +20,7 @@ import java.util.Date;
 @NoArgsConstructor
 @TableName(value="t_candidate")
 public class Candidate {
+    @TableField(value = "id")
     private Long id;
     private String candidateName;
     @TableField(exist = false)
@@ -34,7 +35,6 @@ public class Candidate {
     @TableField(value = "expect_salary")
     private String expectSalary;
     private String attachment;
-
     @TableField(fill = FieldFill.INSERT)
     private Date createTime;
 

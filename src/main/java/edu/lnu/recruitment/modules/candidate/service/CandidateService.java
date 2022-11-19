@@ -11,7 +11,7 @@ import java.util.List;
 
 public interface CandidateService {
     //注册接口
-    void register(Candidate candidate);
+    R register(Candidate candidate);
     //上传简历
     R upload(MultipartFile file);
     //简历下载

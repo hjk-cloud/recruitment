@@ -27,11 +27,11 @@ public class CandidateController {
     @RequestMapping("/register")
     public R register(@RequestBody Candidate candidate){
         try{
-            candidateService.register(candidate);
+           return candidateService.register(candidate);
         }catch (Exception e){
             return R.error(e.getMessage());
         }
-        return R.ok("注册成功");
+
     }
 
 

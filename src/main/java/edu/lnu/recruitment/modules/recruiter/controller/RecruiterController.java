@@ -27,11 +27,10 @@ public class RecruiterController {
     public R register(@RequestBody Recruiter recruiter){
         try{
             recruiterService.register(recruiter);
+            return R.ok("注册成功");
         }catch (Exception e){
             return R.error(e.getMessage());
         }
-        return R.ok("注册成功");
+
     }
-
-
 }

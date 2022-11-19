@@ -48,8 +48,8 @@ public class CandidateServiceImpl implements CandidateService {
     private UserDao userDao;
 
     @Override
-//    @Transactional(rollbackFor = Exception.class)
-    public void register(Candidate candidate) {
+    @Transactional(rollbackFor = Exception.class)
+    public R register(Candidate candidate) {
 
         //设置两表的共同Id
         long commonId = new Snowflake(0, 1).nextId();
@@ -57,9 +57,7 @@ public class CandidateServiceImpl implements CandidateService {
         /**
          * 该部分为注册公共用户表
          */
-        System.out.println(candidate.toString());
         User user = new User(commonId, candidate.getCandidateName(), passwordEncoder.encode(candidate.getCandidatePassword()));
-        System.out.println(user.toString());
         //查询用户是否已被注册
         QueryWrapper<User> userQueryWrapper = new QueryWrapper();
         userQueryWrapper.eq("user_name", candidate.getCandidateName());
@@ -83,7 +81,6 @@ public class CandidateServiceImpl implements CandidateService {
         }else{
             //对用户id采用雪花算法
             candidate.setId(commonId);
-            //ToDo 处理用户简历
             //未注册的用户才可以注册
             candidateMapper.insert(candidate);
         }
@@ -92,7 +89,7 @@ public class CandidateServiceImpl implements CandidateService {
          * 更新用户和角色中间表
          */
         userDao.insertUserRole(commonId, 2L, new Snowflake(0, 1).nextId());
-
+        return R.ok("注册成功");
 
     }
 
