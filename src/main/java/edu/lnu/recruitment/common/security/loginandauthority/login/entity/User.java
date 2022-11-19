@@ -25,7 +25,7 @@ import java.util.Set;
 public class User implements UserDetails {
     //用户id
     @TableId(value = "user_id")
-    private Long userid;
+    private Long userId;
     //登录用户名
     @TableField(value = "user_name")
     private String username;
@@ -36,8 +36,8 @@ public class User implements UserDetails {
     @TableField(exist=false)
     private List<Role> roles;//关系属性 用来存储当前用户所有角色信息
 
-    public User(Long userid, String username, String password) {
-        this.userid = userid;
+    public User(Long userId, String username, String password) {
+        this.userId = userId;
         this.username = username;
         this.password = password;
     }

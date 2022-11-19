@@ -44,7 +44,7 @@ public class MyUserDetailService implements UserDetailsService {
             throw new RuntimeException("该用户不存在，请检查账号");
         }
         //查询用户对应的权限信息,连表查询
-        List<Role> roles = userDao.findUserRoles(user.getUserid());
+        List<Role> roles = userDao.findUserRoles(user.getUserId());
         user.setRoles(roles);
         //将返回结果以UserDetails返回
         return user;
