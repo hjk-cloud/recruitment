@@ -12,10 +12,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 /**
  * @ClassName : CandidateServiceImpl
  * @Description :
@@ -67,7 +63,7 @@ public class CandidateServiceImpl implements CandidateService {
             throw new RuntimeException("该用户名已存在");
         }else{
             //对用户id采用雪花算法
-            candidate.setCandidateId(commonId);
+            candidate.setId(commonId);
             //ToDo 处理用户简历
             //未注册的用户才可以注册
             candidateMapper.insert(candidate);
