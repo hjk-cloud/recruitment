@@ -2,6 +2,7 @@ package edu.lnu.recruitment.modules.position.controller;
 
 import edu.lnu.recruitment.common.utils.R;
 import edu.lnu.recruitment.modules.position.entity.Position;
+import edu.lnu.recruitment.modules.position.entity.PositionDetails;
 import edu.lnu.recruitment.modules.position.service.PositionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -46,8 +47,8 @@ public class PositionController {
 
     @RequestMapping("/queryById")
     public R queryById(@RequestBody Map<String, Object> params) {
-        Position position = positionService.queryById(params);
-        return R.ok().put("position", position);
+        PositionDetails positionDetails = positionService.queryById(params);
+        return R.ok().put("positionDetails", positionDetails);
     }
 
     @RequestMapping("/queryHistory")
@@ -58,7 +59,6 @@ public class PositionController {
 
     @RequestMapping("/delete")
     public R delete(String positionId) {
-
         boolean flag = positionService.delete(Long.valueOf(positionId));
         return flag? R.ok(): R.error("删除失败");
     }

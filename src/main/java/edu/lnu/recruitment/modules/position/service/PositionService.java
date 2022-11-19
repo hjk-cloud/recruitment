@@ -2,6 +2,7 @@ package edu.lnu.recruitment.modules.position.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import edu.lnu.recruitment.modules.position.entity.Position;
+import edu.lnu.recruitment.modules.position.entity.PositionDetails;
 
 import java.util.List;
 import java.util.Map;
@@ -22,7 +23,7 @@ public interface PositionService extends IService<Position> {
 
     List<Position> queryPageByConditions(Map<String, Object> params);
 
-    Position queryById(Map<String, Object> params);
+    PositionDetails queryById(Map<String, Object> params);
 
     List<Object> queryHistory(long candidateId);
 
