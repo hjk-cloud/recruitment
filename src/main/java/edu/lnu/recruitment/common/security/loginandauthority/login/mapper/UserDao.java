@@ -13,8 +13,8 @@ import java.util.List;
 @Mapper
 public interface UserDao extends BaseMapper<User> {
     //处理mybaitsplus无法处理的连表查询
-    List<Role> findUserRoles(Long userid);
+    List<Role> findUserRoles(Long userId);
     //更新用户角色中间表
-    void insertUserRole(Long userid, Integer roleid, Long ruid);
+    void insertUserRole(Long userId, Long roleId, Long ruId);
 
 }

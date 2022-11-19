@@ -72,7 +72,7 @@ public class CandidateServiceImpl implements CandidateService {
         /**
          * 更新用户和角色中间表
          */
-        userDao.insertUserRole(commonId, 2, new Snowflake(0, 1).nextId());
+        userDao.insertUserRole(commonId, 2L, new Snowflake(0, 1).nextId());
 
 
     }

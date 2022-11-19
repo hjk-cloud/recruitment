@@ -72,7 +72,7 @@ public class RecruiterServiceImpl implements RecruiterService {
         /**
          * 更新用户和角色中间表
          */
-        userDao.insertUserRole(commonId, 3, new Snowflake(0, 1).nextId());
+        userDao.insertUserRole(commonId, 3L, new Snowflake(0, 1).nextId());
 
     }
 

@@ -50,10 +50,10 @@ public class CompanyController {
     /**
      * 审批公司信息
      */
-    @PostMapping("/check")
-    public R check(@RequestBody Company company){
-        companyService.check(company);
-        return R.ok("审批完成");
+    @GetMapping("/check")
+    public R check( Long id,Byte status){
+        boolean isSuccess =companyService.check(id,status);
+        return R.ok("审批完成"+isSuccess);
     }
 
     /**
