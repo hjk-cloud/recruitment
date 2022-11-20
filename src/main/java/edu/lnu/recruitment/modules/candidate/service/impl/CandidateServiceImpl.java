@@ -10,6 +10,8 @@ import edu.lnu.recruitment.modules.candidate.entity.CandidateFile;
 import edu.lnu.recruitment.modules.candidate.mapper.CandidateFileMapper;
 import edu.lnu.recruitment.modules.candidate.mapper.CandidateMapper;
 import edu.lnu.recruitment.modules.candidate.service.CandidateService;
+import edu.lnu.recruitment.modules.company.entity.Company;
+import edu.lnu.recruitment.modules.position.entity.Position;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -159,8 +161,15 @@ public class CandidateServiceImpl implements CandidateService {
         }
 
     }
-
-
+    @Override
+    public Candidate queryById(long id) {
+        return candidateMapper.selectById(id);
+    }
+    @Override
+    public boolean update(Candidate candidate) {
+        boolean isSuccess = candidateMapper.updateById(candidate) > 0;
+        return isSuccess;
+    }
 }
 
 

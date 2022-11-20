@@ -29,8 +29,8 @@ public class Candidate {
     private Integer sex;
     private String birthDate;
     private String city;
-    private String jobStatus;
-    private String education;
+    private Integer jobStatus;
+    private Integer education;
     private String school;
     @TableField(value = "expect_salary")
     private String expectSalary;

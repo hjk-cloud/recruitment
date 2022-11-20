@@ -64,7 +64,7 @@ public class CompanyController {
      * 管理员查看全部未审核信息
      */
     @GetMapping("/admin/showAll")
-    public R show(int page, int size){
+    public R showAll(int page, int size){
 
         List<Company> company = companyService.queryAllUnchecked(page, size);
         return R.ok().put("company", company);

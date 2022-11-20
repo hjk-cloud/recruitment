@@ -3,12 +3,11 @@ package edu.lnu.recruitment.modules.candidate.controller;
 import edu.lnu.recruitment.common.utils.R;
 import edu.lnu.recruitment.modules.candidate.entity.Candidate;
 import edu.lnu.recruitment.modules.candidate.service.CandidateService;
+import edu.lnu.recruitment.modules.company.entity.Company;
+import edu.lnu.recruitment.modules.position.entity.Position;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @ClassName : CandidateController
@@ -33,6 +32,23 @@ public class CandidateController {
         }
 
     }
+    /**
+     * 展示用户信息
+     */
+    @GetMapping("/show")
+    public R show( Long id) {
 
+        Candidate candidate = candidateService.queryById(id);
+        return R.ok().put("candidate", candidate);
+    }
+    /**
+     * 更新用户信息
+     */
+    @RequestMapping("/updateInfo")
+    public R updateInfo(@RequestBody Candidate candidate) {
 
+        boolean flag = candidateService.update(candidate);
+        return flag ? R.ok() : R.error("更新失败");
+
+    }
 }

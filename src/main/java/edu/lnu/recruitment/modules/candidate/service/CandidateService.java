@@ -4,6 +4,7 @@ import edu.lnu.recruitment.common.utils.R;
 import edu.lnu.recruitment.modules.candidate.entity.Candidate;
 import edu.lnu.recruitment.modules.candidate.entity.CandidateFile;
 import edu.lnu.recruitment.modules.company.entity.Company;
+import edu.lnu.recruitment.modules.position.entity.Position;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
@@ -20,4 +21,9 @@ public interface CandidateService {
     R findAllFiles(String candidateId);
     //查询用户的所有简历
     R deleteFile(String fileId);
+
+    Candidate queryById(long id);
+
+    boolean update(Candidate candidate);
+
 }
