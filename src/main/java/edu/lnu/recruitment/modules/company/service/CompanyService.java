@@ -19,7 +19,7 @@ public interface CompanyService {
 
     List<Company> queryPageByConditions(Map<String, Object> params);
 
-    boolean check(Long id, Byte verification);
+    boolean check(Map<String, Object> params);
 
     List<Company> queryAllUnchecked(int page, int size);
 

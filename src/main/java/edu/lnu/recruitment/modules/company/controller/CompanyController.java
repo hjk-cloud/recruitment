@@ -55,8 +55,8 @@ public class CompanyController {
      * 审批公司信息
      */
     @GetMapping("/check")
-    public R check(Long id, Byte verification) {
-        boolean isSuccess = companyService.check(id, verification);
+    public R check(@RequestBody Map<String, Object> params) {
+        boolean isSuccess = companyService.check(params);
         return R.ok("审批完成" + isSuccess);
     }
 
