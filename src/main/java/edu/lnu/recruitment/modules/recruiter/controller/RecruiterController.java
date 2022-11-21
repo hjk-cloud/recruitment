@@ -1,7 +1,6 @@
 package edu.lnu.recruitment.modules.recruiter.controller;
 
 import edu.lnu.recruitment.common.utils.R;
-import edu.lnu.recruitment.modules.candidate.entity.Candidate;
 import edu.lnu.recruitment.modules.recruiter.entity.Recruiter;
 import edu.lnu.recruitment.modules.recruiter.service.RecruiterService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,6 +30,7 @@ public class RecruiterController {
         }
 
     }
+
     /**
      * 展示招聘者信息
      */
@@ -40,6 +40,7 @@ public class RecruiterController {
         Recruiter recruiter = recruiterService.queryById(id);
         return R.ok().put("recruiter", recruiter);
     }
+
     /**
      * 更新招聘者信息
      */

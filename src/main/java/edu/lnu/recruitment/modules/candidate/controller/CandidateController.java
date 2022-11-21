@@ -3,10 +3,7 @@ package edu.lnu.recruitment.modules.candidate.controller;
 import edu.lnu.recruitment.common.utils.R;
 import edu.lnu.recruitment.modules.candidate.entity.Candidate;
 import edu.lnu.recruitment.modules.candidate.service.CandidateService;
-import edu.lnu.recruitment.modules.company.entity.Company;
-import edu.lnu.recruitment.modules.position.entity.Position;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 /**
@@ -32,6 +29,7 @@ public class CandidateController {
         }
 
     }
+
     /**
      * 展示用户信息
      */
@@ -41,6 +39,7 @@ public class CandidateController {
         Candidate candidate = candidateService.queryById(id);
         return R.ok().put("candidate", candidate);
     }
+
     /**
      * 更新用户信息
      */

@@ -10,23 +10,16 @@ import edu.lnu.recruitment.modules.candidate.entity.CandidateFile;
 import edu.lnu.recruitment.modules.candidate.mapper.CandidateFileMapper;
 import edu.lnu.recruitment.modules.candidate.mapper.CandidateMapper;
 import edu.lnu.recruitment.modules.candidate.service.CandidateService;
-import edu.lnu.recruitment.modules.company.entity.Company;
-import edu.lnu.recruitment.modules.position.entity.Position;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.util.ResourceUtils;
 import org.springframework.web.multipart.MultipartFile;
 
-import javax.servlet.http.HttpServletRequest;
 import java.io.File;
-import java.io.IOException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.UUID;
 
 /**
  * @ClassName : CandidateServiceImpl
@@ -161,10 +154,12 @@ public class CandidateServiceImpl implements CandidateService {
         }
 
     }
+
     @Override
     public Candidate queryById(long id) {
         return candidateMapper.selectById(id);
     }
+
     @Override
     public boolean update(Candidate candidate) {
         boolean isSuccess = candidateMapper.updateById(candidate) > 0;
