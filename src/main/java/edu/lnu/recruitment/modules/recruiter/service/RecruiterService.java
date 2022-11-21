@@ -10,4 +10,5 @@ public interface RecruiterService {
 
     boolean update(Recruiter recruiter);
 
+
 }
