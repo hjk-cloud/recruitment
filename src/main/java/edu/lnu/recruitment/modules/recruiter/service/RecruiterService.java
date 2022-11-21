@@ -2,9 +2,12 @@ package edu.lnu.recruitment.modules.recruiter.service;
 
 import edu.lnu.recruitment.modules.recruiter.entity.Recruiter;
 
+import java.util.Map;
+
 public interface RecruiterService {
 
-    void register(Recruiter recruiter);
+
+    boolean register(Map<String, Object> map);
 
     Recruiter queryById(long id);
 

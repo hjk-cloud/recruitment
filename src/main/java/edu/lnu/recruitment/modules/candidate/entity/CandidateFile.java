@@ -22,7 +22,6 @@ import java.util.Date;
 @TableName(value="t_candidate_file")
 @Accessors(chain = true)
 public class CandidateFile {
-    @TableField(value = "id")
     private Long id;
     @TableField(value = "file_name")
     private String fileName;

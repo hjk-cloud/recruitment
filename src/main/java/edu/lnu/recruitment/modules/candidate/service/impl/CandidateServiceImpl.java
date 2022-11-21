@@ -3,7 +3,9 @@ package edu.lnu.recruitment.modules.candidate.service.impl;
 import cn.hutool.core.lang.Snowflake;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import edu.lnu.recruitment.common.security.loginandauthority.login.entity.User;
+import edu.lnu.recruitment.common.security.loginandauthority.login.entity.UserRole;
 import edu.lnu.recruitment.common.security.loginandauthority.login.mapper.UserDao;
+import edu.lnu.recruitment.common.security.loginandauthority.login.mapper.UserRoleDao;
 import edu.lnu.recruitment.common.utils.R;
 import edu.lnu.recruitment.modules.candidate.entity.Candidate;
 import edu.lnu.recruitment.modules.candidate.entity.CandidateFile;
@@ -19,7 +21,9 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @ClassName : CandidateServiceImpl
@@ -42,9 +46,12 @@ public class CandidateServiceImpl implements CandidateService {
     @Autowired
     private UserDao userDao;
 
+    @Autowired
+    private UserRoleDao userRoleDao;
+
     @Override
     @Transactional(rollbackFor = Exception.class)
-    public R register(Candidate candidate) {
+    public boolean register(Candidate candidate) {
 
         //设置两表的共同Id
         long commonId = new Snowflake(0, 1).nextId();
@@ -65,8 +72,8 @@ public class CandidateServiceImpl implements CandidateService {
         }
 
         /**
-        * 该部分为注册求职者表
-        */
+         * 该部分为注册求职者表
+         */
         //查询用户是否已被注册
         QueryWrapper<Candidate> candidateQueryWrapper = new QueryWrapper();
         candidateQueryWrapper.eq("candidate_name", candidate.getCandidateName());
@@ -83,8 +90,9 @@ public class CandidateServiceImpl implements CandidateService {
         /**
          * 更新用户和角色中间表
          */
-        userDao.insertUserRole(commonId, 2L, new Snowflake(0, 1).nextId());
-        return R.ok("注册成功");
+        UserRole userRole = new UserRole().setId(new Snowflake(0, 1).nextId()).setUserId(commonId).setRoleId(2L);
+        userRoleDao.insert(userRole);
+        return true;
 
     }
 
@@ -93,7 +101,7 @@ public class CandidateServiceImpl implements CandidateService {
      * @param file
      */
     @Override
-    public R upload(MultipartFile file) {
+    public boolean upload(MultipartFile file, String candidateId) {
         //定义日期格式，返回指定时间格式输入
         SimpleDateFormat sdf = new SimpleDateFormat("/yyyy/MM/dd/");
         String dataformat = sdf.format(new Date());
@@ -109,11 +117,11 @@ public class CandidateServiceImpl implements CandidateService {
             //数据库里存入简历信息
             //ToDo
             //确少用户id
-            candidateFileMapper.insert(new CandidateFile().setId(timeId).setFileName(file.getOriginalFilename()).setPath(realpath).setUploadTime(new Date()));
-            return R.ok("简历成功上传");
+            candidateFileMapper.insert(new CandidateFile().setId(timeId).setFileName(file.getOriginalFilename()).setPath(realpath).setUploadTime(new Date()).setCandidateId(Long.valueOf(candidateId)));
+            return true;
         } catch (Exception e) {
             e.printStackTrace();
-            return R.error("服务器内部错误,请查看控制台");
+            return false;
         }
     }
 
@@ -129,30 +137,28 @@ public class CandidateServiceImpl implements CandidateService {
     }
 
     @Override
-    public R findAllFiles(String candidateId) {
+    public Map<String, Object> findAllFiles(String candidateId) {
         QueryWrapper<CandidateFile> candidateFileQueryWrapper = new QueryWrapper();
         candidateFileQueryWrapper.eq("candidate_id", candidateId);
         List<CandidateFile> candidateFiles = candidateFileMapper.selectList(candidateFileQueryWrapper);
-        R r = new R();
+        Map<String, Object> map = new HashMap<>();
         for(CandidateFile file : candidateFiles){
-            r.put(file.getId().toString(),file.getFileName());
+            map.put(file.getId().toString(),file.getFileName());
         }
-        return r;
+        return map;
     }
 
     @Override
-    public R deleteFile(String fileId) {
+    public boolean deleteFile(String fileId) {
         try{
             CandidateFile candidateFile = candidateFileMapper.selectById(fileId);
             File file = new File(candidateFile.getPath(), candidateFile.getId() + ".pdf");
             if(file.exists())file.delete();
             candidateFileMapper.deleteById(fileId);
-            return R.ok("成功删除简历");
+            return true;
         }catch (Exception e){
-            e.printStackTrace();
-            return R.error("删除简历失败");
+            return false;
         }
-
     }
 
     @Override

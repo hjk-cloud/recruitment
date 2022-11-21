@@ -23,12 +23,14 @@ public class CandidateController {
     @RequestMapping("/register")
     public R register(@RequestBody Candidate candidate){
         try{
-           return candidateService.register(candidate);
+            candidateService.register(candidate);
+            return R.ok("注册成功");
         }catch (Exception e){
             return R.error(e.getMessage());
         }
 
     }
+
 
     /**
      * 展示用户信息

@@ -3,6 +3,7 @@ package edu.lnu.recruitment.modules.company.mapper;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import edu.lnu.recruitment.modules.company.entity.Company;
 import org.apache.ibatis.annotations.Mapper;
+import org.springframework.stereotype.Repository;
 
 /**
  * @Package: edu.lnu.recruitment.modules.company.mapper
@@ -12,6 +13,7 @@ import org.apache.ibatis.annotations.Mapper;
  * @Description:
  */
 @Mapper
+@Repository
 public interface CompanyMapper extends BaseMapper<Company> {
     boolean updateStatus(Long id, byte verification);
 

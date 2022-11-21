@@ -6,6 +6,8 @@ import edu.lnu.recruitment.modules.recruiter.service.RecruiterService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Map;
+
 /**
  * @ClassName : RecruiterController
  * @Description :
@@ -21,9 +23,9 @@ public class RecruiterController {
     private RecruiterService recruiterService;
 
     @RequestMapping("/register")
-    public R register(@RequestBody Recruiter recruiter){
+    public R register(@RequestBody Map<String, Object> map){
         try{
-            recruiterService.register(recruiter);
+            recruiterService.register(map);
             return R.ok("注册成功");
         }catch (Exception e){
             return R.error(e.getMessage());

@@ -10,8 +10,6 @@
         where role_id = (select role_id from t_user_role where user_id = #{userId})
     </select>
 
-    <insert id="insertUserRole">
-        insert into t_user_role(role_id, user_id, ru_id) values (#{roleId}, #{userId}, #{ruId})
-    </insert>
+
 
 </mapper>

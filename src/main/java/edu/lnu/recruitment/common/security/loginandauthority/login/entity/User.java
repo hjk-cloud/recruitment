@@ -1,5 +1,6 @@
 package edu.lnu.recruitment.common.security.loginandauthority.login.entity;
 
+import com.baomidou.mybatisplus.annotation.FieldFill;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
@@ -8,10 +9,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 /**
  * @ClassName : User
@@ -35,6 +33,12 @@ public class User implements UserDetails {
     //存储所有角色信息
     @TableField(exist=false)
     private List<Role> roles;//关系属性 用来存储当前用户所有角色信息
+
+    @TableField(fill = FieldFill.INSERT)
+    private Date createTime;
+
+    @TableField(fill = FieldFill.INSERT_UPDATE)
+    private Date updateTime;
 
     public User(Long userId, String username, String password) {
         this.userId = userId;

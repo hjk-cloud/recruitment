@@ -33,7 +33,7 @@ public class FileController {
     private CandidateService candidateService;
 
     @RequestMapping("/upload")
-    public R fileUpload(MultipartFile file) {
+    public R fileUpload(MultipartFile file, String candidateId) {
         //获得文件原始名字
         String originalFilename = file.getOriginalFilename();
         if (!originalFilename.endsWith(".pdf")) {
@@ -41,7 +41,12 @@ public class FileController {
         } else if (file.getSize() > File_SIZE) {
             return R.error("请上传小于5MB文件");
         }
-        return candidateService.upload(file);
+        try{
+            candidateService.upload(file, candidateId);
+            return R.ok("简历上传成功");
+        }catch (Exception e){
+            return R.error(e.getMessage());
+        }
     }
 
 
@@ -52,7 +57,7 @@ public class FileController {
         //获取打开方式
         openStyle = openStyle == null ? "attachment" : "inline";
         //获取文件信息
-       CandidateFile file = candidateService.download(fileId);
+        CandidateFile file = candidateService.download(fileId);
         //获取文件输入流
         FileInputStream is = new FileInputStream(new File(file.getPath(), file.getId() + ".pdf"));
         //附件下载
@@ -68,13 +73,19 @@ public class FileController {
     @RequestMapping("/findallfiles")
     public R findAllFiles(String candidateId) {
         //获取求职者所有简历
-        return candidateService.findAllFiles(candidateId);
+        return R.ok(candidateService.findAllFiles(candidateId));
     }
 
     @RequestMapping("/deletefiles")
     public R deleteFiles(String fileId) {
         //删除求职者简历
-        return candidateService.deleteFile(fileId);
+        try{
+            candidateService.deleteFile(fileId);
+            return R.ok("简历成功删除");
+        }catch (Exception e){
+            return R.error(e.getMessage());
+        }
+
     }
 
 
