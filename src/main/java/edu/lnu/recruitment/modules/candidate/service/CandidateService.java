@@ -3,12 +3,8 @@ package edu.lnu.recruitment.modules.candidate.service;
 import edu.lnu.recruitment.common.utils.R;
 import edu.lnu.recruitment.modules.candidate.entity.Candidate;
 import edu.lnu.recruitment.modules.candidate.entity.CandidateFile;
-import edu.lnu.recruitment.modules.company.entity.Company;
-import edu.lnu.recruitment.modules.position.entity.Position;
 import org.springframework.web.multipart.MultipartFile;
 
-import javax.servlet.http.HttpServletRequest;
-import java.util.List;
 
 public interface CandidateService {
     //注册接口
