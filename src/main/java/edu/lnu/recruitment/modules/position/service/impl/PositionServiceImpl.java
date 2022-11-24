@@ -1,9 +1,12 @@
 package edu.lnu.recruitment.modules.position.service.impl;
 
 import cn.hutool.core.lang.Snowflake;
+import cn.hutool.core.util.ObjectUtil;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import edu.lnu.recruitment.common.exception.MyException;
+import edu.lnu.recruitment.common.exception.MyExceptionCodeMsg;
 import edu.lnu.recruitment.common.utils.RedisUtil;
 import edu.lnu.recruitment.modules.delivery.entity.Delivery;
 import edu.lnu.recruitment.modules.delivery.mapper.DeliveryMapper;
@@ -17,7 +20,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ArrayBlockingQueue;
-import java.util.concurrent.Future;
+import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
@@ -103,27 +106,33 @@ public class PositionServiceImpl extends ServiceImpl<PositionMapper, Position> i
                 new ArrayBlockingQueue<>(QUEUE_CAPACITY),
                 new ThreadPoolExecutor.CallerRunsPolicy()
         );
+        final int TASK_SIZE = 4;
+        CountDownLatch doneSignal = new CountDownLatch(TASK_SIZE);
         //职位基本信息
-        Future future1 = executor.submit(() -> {
+        executor.execute(() -> {
             positionDetails.setPosition(getPosition(positionId, candidateId));
+            doneSignal.countDown();
         });
         //浏览量
-        Future future2 = executor.submit(() -> {
+        executor.execute(() -> {
             redisUtil.incr("position_count_" + positionId, 1);
             positionDetails.setViewCount((Integer) redisUtil.get("position_count_" + positionId));
+            doneSignal.countDown();
         });
         //点赞状态
-        Future future3 = executor.submit(() -> {
+        executor.execute(() -> {
             positionDetails.setFavorite(getFavorite(positionId, candidateId));
+            doneSignal.countDown();
         });
         //投递状态
-        Future future4 = executor.submit(() -> {
+        executor.execute(() -> {
             positionDetails.setDelivery(getDelivery(positionId, candidateId));
+            doneSignal.countDown();
         });
-        while (true) {
-            if (future1.isDone() && future2.isDone() && future3.isDone() && future4.isDone()) {
-                break;
-            }
+        try {
+            doneSignal.await();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
         return positionDetails;
     }
@@ -152,7 +161,7 @@ public class PositionServiceImpl extends ServiceImpl<PositionMapper, Position> i
             return false;
         }
         List<Object> list = redisUtil.lGet("favorite_" + candidateId, 0, -1);
-        return list.contains(positionId);
+        return list.contains(Long.valueOf(positionId));
     }
 
     private boolean getDelivery(String positionId, String candidateId) {
@@ -172,10 +181,10 @@ public class PositionServiceImpl extends ServiceImpl<PositionMapper, Position> i
 
     @Override
     public boolean delete(long positionId) {
-        boolean isSuccess = positionMapper.deleteById(positionId) > 0;
-        if (!isSuccess) {
-            return false;
+        if (positionId <= 0 || ObjectUtil.isEmpty(positionMapper.selectById(positionId))) {
+            throw new MyException(MyExceptionCodeMsg.INVALID_ID);
         }
+        positionMapper.deleteById(positionId);
         redisUtil.del("position_count_" + positionId);
         redisUtil.del("position_" + positionId);
         return true;

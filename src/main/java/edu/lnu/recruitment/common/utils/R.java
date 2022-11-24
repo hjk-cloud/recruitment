@@ -16,12 +16,12 @@ public class R extends HashMap<String, Object> {
     private static final long serialVersionUID = 1L;
 
     public R() {
-        put("code", 0);
+        put("code", 200);
         put("msg", "success");
     }
 
     public static R error() {
-        return error(HttpStatus.SC_INTERNAL_SERVER_ERROR, "未知异常，请联系管理员");
+        return error(HttpStatus.SC_INTERNAL_SERVER_ERROR, "未知异常");
     }
 
     public static R error(String msg) {
